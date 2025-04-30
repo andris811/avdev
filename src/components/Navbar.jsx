@@ -6,19 +6,29 @@ const Navbar = () => {
 
   const navItems = [
     { id: "intro", label: "Home" },
-    { id: "projects", label: "Projects" },
     { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" className="flex items-center">
-          <div className="bg-gray-200 rounded-lg p-1">
-            <img src={`${process.env.PUBLIC_URL}/AVDev_logo.png`} alt="Logo" className="h-12 w-auto rounded-lg " />
-          </div>
-        </a>
+        {/* Site logo */}
+        <Link
+          to="intro"
+          smooth={true}
+          duration={500}
+          offset={-60}
+          className="flex items-center cursor-pointer"
+        >
+          <span className="text-2xl font-mono tracking-wide flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-md shadow-sm">
+            <span className="animate-pulse text-blue-500">&lt;/&gt;</span>
+            <span className="font-semibold text-gray-800 dark:text-gray-100">
+              AVDev
+            </span>
+          </span>
+        </Link>
 
         {/* Desktop nav */}
         <ul className="hidden md:flex space-x-6 text-sm text-gray-700">
@@ -74,8 +84,14 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {isOpen && (
-        <ul className="md:hidden bg-white px-4 pb-4 text-sm text-gray-700 space-y-2">
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen
+            ? "max-h-96 opacity-100 scale-100"
+            : "max-h-0 opacity-0 scale-95"
+        }`}
+      >
+        <ul className="bg-white px-4 pb-4 pt-2 text-sm text-gray-700 space-y-2">
           {navItems.map((item) => (
             <li key={item.id}>
               <Link
@@ -93,7 +109,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      )}
+      </div>
     </nav>
   );
 };

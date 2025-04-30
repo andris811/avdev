@@ -12,10 +12,10 @@ function App() {
       <Navbar />
       <main className="pt-20"> {/* space for fixed navbar */}
         <Introduction />
+        <About />
         <section id="projects">
           <Projects />
         </section>
-        <About />
         <Contact />
       </main>
       <Footer />
