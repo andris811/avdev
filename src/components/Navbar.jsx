@@ -1,15 +1,99 @@
-import React from 'react';
-import { Link } from 'react-scroll';
+import React, { useState } from "react";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { id: "intro", label: "Home" },
+    { id: "projects", label: "Projects" },
+    { id: "about", label: "About" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4">
-      <ul className="flex justify-center space-x-6 text-lg text-gray-800">
-        <li><Link to="intro" smooth={true} duration={500} className="cursor-pointer hover:text-blue-500">Home</Link></li>
-        <li><Link to="projects" smooth={true} duration={500} className="cursor-pointer hover:text-blue-500">Projects</Link></li>
-        <li><Link to="about" smooth={true} duration={500} className="cursor-pointer hover:text-blue-500">About</Link></li>
-        <li><Link to="contact" smooth={true} duration={500} className="cursor-pointer hover:text-blue-500">Contact</Link></li>
-      </ul>
+    <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" className="flex items-center space-x-2">
+          <img src="/AVDev_logo.png" alt="Logo" className="h-8 w-auto" />
+          {/* Optional: Add name beside the logo */}
+          {/* <span className="text-gray-800 font-semibold">AV Dev</span> */}
+        </a>
+
+        {/* Desktop nav */}
+        <ul className="hidden md:flex space-x-6 text-sm text-gray-700">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <Link
+                to={item.id}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-60}
+                activeClass="text-black underline"
+                className="cursor-pointer transition duration-300 hover:text-black"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <svg
+              className="w-6 h-6 text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <ul className="md:hidden bg-white px-4 pb-4 text-sm text-gray-700 space-y-2">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <Link
+                to={item.id}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-60}
+                activeClass="text-black underline"
+                className="block cursor-pointer transition duration-300 hover:text-black"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 };
