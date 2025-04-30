@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/avdev/static/css/main.3b12574c.css",
+    "main.js": "/avdev/static/js/main.0aa29752.js",
+    "static/js/453.a58521e0.chunk.js": "/avdev/static/js/453.a58521e0.chunk.js",
+    "index.html": "/avdev/index.html",
+    "main.3b12574c.css.map": "/avdev/static/css/main.3b12574c.css.map",
+    "main.0aa29752.js.map": "/avdev/static/js/main.0aa29752.js.map",
+    "453.a58521e0.chunk.js.map": "/avdev/static/js/453.a58521e0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3b12574c.css",
+    "static/js/main.0aa29752.js"
+  ]
+}
