@@ -14,10 +14,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" className="flex items-center space-x-2">
-          <img src="/AVDev_logo.png" alt="Logo" className="h-8 w-auto" />
-          {/* Optional: Add name beside the logo */}
-          {/* <span className="text-gray-800 font-semibold">AV Dev</span> */}
+        <a href="/" className="flex items-center">
+          <div className="bg-gray-200 rounded-lg p-1">
+            <img src="/AVDev_logo.png" alt="Logo" className="h-12 w-auto rounded-lg" />
+          </div>
         </a>
 
         {/* Desktop nav */}
