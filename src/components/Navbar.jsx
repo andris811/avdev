@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         <a href="/" className="flex items-center">
           <div className="bg-gray-200 rounded-lg p-1">
-            <img src="/AVDev_logo.png" alt="Logo" className="h-12 w-auto rounded-lg" />
+            <img src={`${process.env.PUBLIC_URL}/AVDev_logo.png`} alt="Logo" className="h-12 w-auto rounded-lg " />
           </div>
         </a>
 
