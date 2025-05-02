@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
       <div className="max-w-xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-center">Contact</h2>

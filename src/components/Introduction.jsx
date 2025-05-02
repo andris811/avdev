@@ -6,7 +6,8 @@ const Introduction = () => {
   return (
     <section
       id="intro"
-      className="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 bg-white dark:bg-gray-900"
+      className="min-h-screen flex flex-col items-center text-center px-4 pt-16 pb-12 bg-white dark:bg-gray-900"
+
     >
       {/* Logo */}
       <img
@@ -93,7 +94,8 @@ const Introduction = () => {
       >
         Let’s connect ↓
       </Link>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-4xl text-gray-400 select-none leading-none">
+      <div className="mt-8 text-4xl text-gray-400 select-none leading-none">
+
         <div className="flex flex-col items-center">
           <span className="opacity-30">⌄</span>
           <span className="opacity-60">⌄</span>
