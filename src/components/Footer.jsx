@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-wrap items-center justify-center gap-2 tracking-wide">
           © {year}{" "}
           <a
-            href="https://andris811.github.io/portfolio/"
+            href="https://andris811.github.io/avdev/"
             target="_blank"
             rel="noopener noreferrer"
             className="transition duration-300 ease-in-out hover:scale-105 text-gray-600 dark:text-gray-300"

@@ -27,6 +27,31 @@ const Navbar = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        isOpen &&
+        !e.target.closest(".mobile-menu") &&
+        !e.target.closest("button[aria-label='Toggle Menu']")
+      ) {
+        setIsOpen(false);
+      }
+    };
+  
+    const handleScroll = () => {
+      if (isOpen) setIsOpen(false);
+    };
+  
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isOpen]);
+  
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
@@ -139,7 +164,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden absolute top-full right-4 mt-2 w-1/4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-md shadow transition-all duration-300 ease-in-out ${
+        className={`mobile-menu md:hidden absolute top-full right-4 mt-2 w-1/4 bg-white dark:bg-gray-800 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-md shadow transition-all duration-300 ease-in-out ${
           isOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"

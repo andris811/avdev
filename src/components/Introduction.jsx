@@ -9,23 +9,21 @@ const Introduction = () => {
       className="min-h-screen flex items-center justify-center text-center px-4 bg-white dark:bg-gray-900 relative"
     >
       <div className="max-w-xl w-full z-10">
+        <div className="relative inline-block mb-4 group">
+          {/* Stronger glow */}
+          <div
+            className="absolute inset-0 scale-125 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 blur-[80px] opacity-50 group-hover:opacity-90 transition duration-700 ease-in-out z-0"
+            aria-hidden="true"
+          ></div>
 
-      <div className="relative inline-block mb-4 group">
-  {/* Stronger glow */}
-  <div
-    className="absolute inset-0 scale-125 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 blur-[80px] opacity-50 group-hover:opacity-90 transition duration-700 ease-in-out z-0"
-    aria-hidden="true"
-  ></div>
-
-  {/* Logo image */}
-  <img
-    src={`${process.env.PUBLIC_URL}/logo.png`}
-    alt="AV logo"
-    className="w-48 md:w-56 relative z-10 drop-shadow-md"
-  />
-</div>
-
-
+          {/* Logo image */}
+          <img
+            src={`${process.env.PUBLIC_URL}/logo.png`}
+            alt="AV logo"
+            draggable="false"
+            className="select-none touch-none w-48 md:w-56 relative z-10 drop-shadow-md"
+          />
+        </div>
 
         {/* Web developer title */}
         <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 mb-1 tracking-wide uppercase">
