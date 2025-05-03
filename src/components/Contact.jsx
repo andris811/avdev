@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
@@ -125,7 +124,7 @@ const Contact = () => {
         )}
 
         {/* Form Glow Effect */}
-        <div className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-purple-400/10 to-blue-400/10 blur-xl" aria-hidden="true"></div>
+        <div className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-purple-400/10 to-blue-400/10 blur-xl pointer-events-none" aria-hidden="true"></div>
       </div>
     </section>
   );

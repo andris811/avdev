@@ -46,7 +46,7 @@ const Navbar = () => {
           : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Site logo */}
         <Link
           to="intro"
