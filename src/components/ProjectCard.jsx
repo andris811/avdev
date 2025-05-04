@@ -10,42 +10,48 @@ const ProjectCard = ({ title, description, image, images, liveLink, repoLink, te
           showThumbs={false}
           infiniteLoop
           showStatus={false}
-          autoPlay={true}
+          autoPlay
           interval={3000}
           transitionTime={600}
-          stopOnHover={true}
-          showArrows={true}
-          className="mb-4 rounded-md"
+          stopOnHover
+          showArrows
+          className="mb-4 rounded-md h-56"
         >
           {images.map((img, i) => (
-            <div key={i}>
+            <div key={i} className="h-56">
               <img
                 src={typeof img === "string" ? img : URL.createObjectURL(img)}
                 alt={`${title} ${i + 1}`}
-                className="h-56 w-full object-cover rounded-md"
+                className="h-full w-full object-cover rounded-md"
               />
             </div>
           ))}
         </Carousel>
       );
-    } else {
+    } else if (image || (images && images.length === 1)) {
       const fallback = images?.[0] || image;
       return (
         <img
           src={fallback}
           alt={title}
-          className="rounded-md mb-4 h-56 w-full object-cover"
+          className="h-56 w-full object-cover rounded-md mb-4"
         />
+      );
+    } else {
+      return (
+        <div className="h-56 w-full bg-gray-300 dark:bg-gray-700 rounded-md mb-4 flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm">
+          No image available
+        </div>
       );
     }
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 p-5 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl duration-300 w-full max-w-xl h-full flex flex-col justify-between">
+    <div className="flex flex-col justify-between bg-gray-100 dark:bg-gray-800 p-5 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl duration-300 w-full max-w-xl min-h-[500px]">
       <div>
         {renderImages()}
 
-        {/* Work in progress badge */}
+        {/* Work in Progress badge */}
         {/* {!liveLink && (
           <span className="inline-block mb-2 text-xs text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-800 px-2 py-1 rounded-full font-medium">
             🚧 Work in Progress
@@ -69,7 +75,7 @@ const ProjectCard = ({ title, description, image, images, liveLink, repoLink, te
       </div>
 
       {/* Action buttons */}
-      <div className="flex gap-3 mt-auto">
+      <div className="flex gap-3 mt-4">
         {liveLink ? (
           <a
             href={liveLink}
