@@ -90,7 +90,7 @@ const Navbar = () => {
 
         {/* Desktop nav + theme toggle */}
         <div className="flex items-center space-x-4">
-          <ul className="hidden md:flex space-x-6 text-sm text-gray-700 dark:text-gray-300">
+          <ul className="hidden md:flex space-x-6 text-base md:text-lg xl:text-xl text-gray-700 dark:text-gray-300 font-medium">
             {navItems.map((item) => (
               <li key={item.id}>
                 <Link
@@ -170,7 +170,7 @@ const Navbar = () => {
             : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
-        <ul className="flex flex-col items-start text-sm text-gray-700 dark:text-gray-300 p-3 space-y-2">
+        <ul className="flex flex-col items-start text-base md:text-lg text-gray-700 dark:text-gray-300 p-3 space-y-3 font-medium">
           {navItems.map((item) => (
             <li key={item.id}>
               <Link

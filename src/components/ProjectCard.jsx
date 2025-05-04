@@ -55,7 +55,7 @@ const ProjectCard = ({
   };
 
   return (
-    <div className="flex flex-col justify-between bg-gray-100 dark:bg-gray-800 p-5 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl duration-300 w-full max-w-xl min-h-[500px]">
+    <div className="relative z-10 flex flex-col justify-between bg-gray-100 dark:bg-gray-800 p-5 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl duration-300 w-full max-w-xl min-h-[500px]">
       <div>
         {renderImages()}
 

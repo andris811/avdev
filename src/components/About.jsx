@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -124,6 +125,12 @@ const About = () => {
           aria-hidden="true"
         ></div>
       </motion.div>
+      {/* ⌄ Scroll Hint UNDER the card */}
+      <div className="mt-8 animate-bounce text-gray-400 dark:text-gray-500 z-20">
+        <Link to="projects" smooth={true} duration={500} offset={-60}>
+          <span className="text-2xl md:text-3xl cursor-pointer">⌄</span>
+        </Link>
+      </div>
     </section>
   );
 };
