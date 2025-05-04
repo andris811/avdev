@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const {
@@ -38,7 +39,12 @@ const Contact = () => {
       id="contact"
       className="min-h-screen flex items-center justify-center px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
-      <div className="relative max-w-xl w-full p-8 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative max-w-xl w-full p-8 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10">
         {/* Header */}
         <h2 className="text-3xl font-bold mb-2 text-center">Let’s Connect</h2>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400 mb-6">
@@ -125,7 +131,7 @@ const Contact = () => {
 
         {/* Form Glow Effect */}
         <div className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-purple-400/10 to-blue-400/10 blur-xl pointer-events-none" aria-hidden="true"></div>
-      </div>
+      </motion.div>
     </section>
   );
 };

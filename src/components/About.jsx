@@ -1,23 +1,35 @@
+import { motion } from "framer-motion";
+
 const About = () => {
   return (
     <section
       id="about"
       className="min-h-screen flex items-center justify-center px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
-      <div className="relative max-w-6xl w-full p-8 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative max-w-6xl w-full p-8 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10"
+      >
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Left column – about text & soft skills */}
           <div>
             <h2 className="text-3xl font-bold mb-6">ABOUT ME</h2>
             <p className="mb-4">
-              I'm Andras from Hungary, a full-stack developer based in Shanghai with a background in education and environmental science.
-              I transitioned into tech after years of working in international settings and managing teams.
-              I enjoy blending logic and creativity to build beautiful, functional web apps.
+              I'm Andras from Hungary, a full-stack developer based in Shanghai
+              with a background in education and environmental science. I
+              transitioned into tech after years of working in international
+              settings and managing teams. I enjoy blending logic and creativity
+              to build beautiful, functional web apps.
             </p>
             <p className="mb-4">
-              I'm highly adaptable, love working across cultures, and always eager to learn new technologies.
-              Outside of coding, I’m passionate about photography, gaming, and exploring the world with my fiancée.
-              I also have basic experience with mobile app development using Swift and indie game development using Godot.
+              I'm highly adaptable, love working across cultures, and always
+              eager to learn new technologies. Outside of coding, I’m passionate
+              about photography, gaming, and exploring the world with my
+              fiancée. I also have basic experience with mobile app development
+              using Swift and indie game development using Godot.
             </p>
 
             <div className="mt-6">
@@ -26,7 +38,9 @@ const About = () => {
                 <li>Cross-cultural communication & teamwork</li>
                 <li>Fast learner and detail-oriented</li>
                 <li>Creative problem solving</li>
-                <li>Strong foundation in both frontend & backend development</li>
+                <li>
+                  Strong foundation in both frontend & backend development
+                </li>
               </ul>
             </div>
           </div>
@@ -37,12 +51,43 @@ const About = () => {
 
             <div className="space-y-4 text-sm">
               {[
-                ["Frontend", ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS"]],
-                ["Backend", ["Node.js", "Express", "NestJS", "MongoDB", "PostgreSQL"]],
+                [
+                  "Frontend",
+                  [
+                    "React",
+                    "Next.js",
+                    "JavaScript",
+                    "TypeScript",
+                    "Tailwind CSS",
+                  ],
+                ],
+                [
+                  "Backend",
+                  ["Node.js", "Express", "NestJS", "MongoDB", "PostgreSQL"],
+                ],
                 ["Languages", ["Python", "Java", "Ruby", "Swift"]],
-                ["Frameworks", ["Flask", "Django", "FastAPI", "Spring Boot", "Ruby on Rails"]],
+                [
+                  "Frameworks",
+                  [
+                    "Flask",
+                    "Django",
+                    "FastAPI",
+                    "Spring Boot",
+                    "Ruby on Rails",
+                  ],
+                ],
                 ["Tools", ["Git", "GitHub", "VS Code", "Vite", "npm"]],
-                ["Creative Tools", ["Photoshop", "Blender", "DaVinci Resolve", "Figma", "Lightroom", "Capture One"]],
+                [
+                  "Creative Tools",
+                  [
+                    "Photoshop",
+                    "Blender",
+                    "DaVinci Resolve",
+                    "Figma",
+                    "Lightroom",
+                    "Capture One",
+                  ],
+                ],
                 ["Game & Mobile", ["Godot", "Xcode"]],
               ].map(([label, items]) => (
                 <div key={label}>
@@ -78,7 +123,7 @@ const About = () => {
           className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-purple-400/10 to-blue-400/10 blur-xl pointer-events-none"
           aria-hidden="true"
         ></div>
-      </div>
+      </motion.div>
     </section>
   );
 };
