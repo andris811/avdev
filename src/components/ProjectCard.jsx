@@ -2,7 +2,15 @@ import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const ProjectCard = ({ title, description, image, images, liveLink, repoLink, tech }) => {
+const ProjectCard = ({
+  title,
+  description,
+  image,
+  images,
+  liveLink,
+  repoLink,
+  tech,
+}) => {
   const renderImages = () => {
     if (images && images.length > 1) {
       return (
@@ -58,8 +66,12 @@ const ProjectCard = ({ title, description, image, images, liveLink, repoLink, te
           </span>
         )} */}
 
-        <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">{title}</h3>
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{description}</p>
+        <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">
+          {title}
+        </h3>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+          {description}
+        </p>
 
         {/* Tech stack */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -92,15 +104,22 @@ const ProjectCard = ({ title, description, image, images, liveLink, repoLink, te
           </span>
         )}
 
-        <a
-          href={repoLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-        >
-          <FaGithub className="text-sm" />
-          <span className="text-sm font-semibold">Code</span>
-        </a>
+        {repoLink ? (
+          <a
+            href={repoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+          >
+            <FaGithub className="text-sm" />
+            <span className="text-sm font-semibold">Code</span>
+          </a>
+        ) : (
+          <span className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold opacity-70 cursor-not-allowed">
+            <FaGithub className="text-sm" />
+            <span>Coming Soon</span>
+          </span>
+        )}
       </div>
     </div>
   );

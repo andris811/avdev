@@ -10,13 +10,14 @@ const About = () => {
           <div>
             <h2 className="text-3xl font-bold mb-6">ABOUT ME</h2>
             <p className="mb-4">
-              I'm Andras, a full-stack developer based in Shanghai with a background in education and environmental science.
+              I'm Andras from Hungary, a full-stack developer based in Shanghai with a background in education and environmental science.
               I transitioned into tech after years of working in international settings and managing teams.
               I enjoy blending logic and creativity to build beautiful, functional web apps.
             </p>
             <p className="mb-4">
               I'm highly adaptable, love working across cultures, and always eager to learn new technologies.
               Outside of coding, I’m passionate about photography, gaming, and exploring the world with my fiancée.
+              I also have basic experience with mobile app development using Swift and indie game development using Godot.
             </p>
 
             <div className="mt-6">
@@ -38,10 +39,11 @@ const About = () => {
               {[
                 ["Frontend", ["React", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS"]],
                 ["Backend", ["Node.js", "Express", "NestJS", "MongoDB", "PostgreSQL"]],
-                ["Languages", ["Python", "Java", "Ruby"]],
+                ["Languages", ["Python", "Java", "Ruby", "Swift"]],
                 ["Frameworks", ["Flask", "Django", "FastAPI", "Spring Boot", "Ruby on Rails"]],
                 ["Tools", ["Git", "GitHub", "VS Code", "Vite", "npm"]],
                 ["Creative Tools", ["Photoshop", "Blender", "DaVinci Resolve", "Figma", "Lightroom", "Capture One"]],
+                ["Game & Mobile", ["Godot", "Xcode"]],
               ].map(([label, items]) => (
                 <div key={label}>
                   <p className="font-semibold mb-1">{label}</p>
@@ -63,8 +65,8 @@ const About = () => {
               <h3 className="text-xl font-semibold mb-2">Certificates</h3>
               <ul className="text-sm space-y-2">
                 <li>✔️ Web Development Bootcamp – Le Wagon Shanghai</li>
+                <li>✔️ Angela Yu’s Full-Stack Development Bootcamp</li>
                 <li>✔️ Java Programming – Training360 Hungary</li>
-                <li>✔️ Angela Yu’s React, Node & Python courses (in progress)</li>
                 <li>✔️ Harvard CS50x (in progress)</li>
               </ul>
             </div>

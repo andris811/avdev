@@ -31,7 +31,7 @@ const projectsData = [
         description: "A full-stack app built with React and Node.js.",
         image: "",
         liveLink: "",
-        repoLink: "https://github.com/andris811/awesome-app",
+        repoLink: "",
         tech: ["React", "Node.js", "Express", "MongoDB"],
       },
     {
@@ -39,7 +39,7 @@ const projectsData = [
         description: "A full-stack app built with React and Node.js.",
         image: "",
         liveLink: "",
-        repoLink: "https://github.com/andris811/awesome-app",
+        repoLink: "",
         tech: ["React", "Node.js", "Express", "MongoDB"],
       },
   ];

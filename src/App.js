@@ -5,6 +5,7 @@ import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Projects />
         </section>
         <Contact />
+        <ScrollToTopButton />
       </main>
       <Footer />
     </div>
