@@ -42,7 +42,8 @@ const Introduction = () => {
               Full-Stack Web Developer
             </p>
             <h1 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 leading-tight">
-              {greeting}, <br />I'm Andras
+              {greeting}, <br />
+              I'm Andras
             </h1>
             <p className="text-base md:text-lg xl:text-xl 2xl:text-2xl text-gray-600 dark:text-gray-300 mb-6 max-w-md xl:max-w-lg 2xl:max-w-xl text-center md:text-left mx-auto md:mx-0">
               I’m a creative and curious developer from Hungary 🇭🇺 living in

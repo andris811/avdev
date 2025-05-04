@@ -37,20 +37,19 @@ const Navbar = () => {
         setIsOpen(false);
       }
     };
-  
+
     const handleScroll = () => {
       if (isOpen) setIsOpen(false);
     };
-  
+
     document.addEventListener("mousedown", handleClickOutside);
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen]);
-  
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));

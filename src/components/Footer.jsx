@@ -32,7 +32,11 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-300 mx-1"
           >
-            <FontAwesomeIcon icon={faLinkedin} size="lg" className="grayscale" />
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              size="lg"
+              className="grayscale"
+            />
           </a>
         </div>
         <p className="leading-relaxed text-center">
