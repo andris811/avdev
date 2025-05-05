@@ -196,7 +196,7 @@ const Navbar = () => {
                   smooth={true}
                   duration={500}
                   spy={true}
-                  offset={-50}
+                  offset={-30}
                   activeClass="text-black dark:text-white underline"
                   className="block cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
                   onClick={() => setIsOpen(false)}
