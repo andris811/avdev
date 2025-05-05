@@ -10,10 +10,16 @@ const Introduction = () => {
 
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Good morning");
-    else if (hour < 18) setGreeting("Good afternoon");
-    else if (hour < 22) setGreeting("Good evening");
-    else setGreeting("Hello night owl");
+
+    if (hour >= 5 && hour < 12) {
+      setGreeting("Good morning");
+    } else if (hour >= 12 && hour < 18) {
+      setGreeting("Good afternoon");
+    } else if (hour >= 18 && hour < 22) {
+      setGreeting("Good evening");
+    } else {
+      setGreeting("Hello night owl");
+    }
   }, []);
 
   return (
@@ -89,8 +95,8 @@ const Introduction = () => {
           </div>
         </motion.div>
       </div>
-      {/* Scroll Hint */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-gray-400 dark:text-gray-500">
+      {/* Scroll Hint – show only on md+ screens */}
+      <div className="hidden md:block absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-gray-400 dark:text-gray-500">
         <Link to="about" smooth={true} duration={500} offset={-60}>
           <span className="text-2xl md:text-3xl cursor-pointer">⌄</span>
         </Link>

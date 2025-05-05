@@ -125,8 +125,9 @@ const About = () => {
           aria-hidden="true"
         ></div>
       </motion.div>
-      {/* ⌄ Scroll Hint UNDER the card */}
-      <div className="mt-8 animate-bounce text-gray-400 dark:text-gray-500 z-20">
+      
+      {/* Scroll Hint – show only on md+ screens */}
+      <div className="hidden md:block mt-8 animate-bounce text-gray-400 dark:text-gray-500 z-20">
         <Link to="projects" smooth={true} duration={500} offset={-60}>
           <span className="text-2xl md:text-3xl cursor-pointer">⌄</span>
         </Link>

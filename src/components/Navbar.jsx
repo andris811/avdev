@@ -72,11 +72,8 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Site logo */}
-        <Link
-          to="intro"
-          smooth={true}
-          duration={500}
-          offset={-60}
+        <span
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center cursor-pointer"
         >
           <span className="text-2xl font-mono tracking-wide flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-md shadow-sm">
@@ -85,24 +82,35 @@ const Navbar = () => {
               AVDev
             </span>
           </span>
-        </Link>
+        </span>
 
         {/* Desktop nav + theme toggle */}
         <div className="flex items-center space-x-4">
           <ul className="hidden md:flex space-x-6 text-base md:text-lg xl:text-xl text-gray-700 dark:text-gray-300 font-medium">
             {navItems.map((item) => (
               <li key={item.id}>
-                <Link
-                  to={item.id}
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  offset={-60}
-                  activeClass="text-black dark:text-white underline"
-                  className="cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
-                >
-                  {item.label}
-                </Link>
+                {item.id === "intro" ? (
+                  <span
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                    className="cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
+                  >
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link
+                    to={item.id}
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    offset={item.id === "contact" ? 95 : -60} // ⬅️ Adjust only for contact
+                    activeClass="text-black dark:text-white underline"
+                    className="cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -172,18 +180,30 @@ const Navbar = () => {
         <ul className="flex flex-col items-start text-base md:text-lg text-gray-700 dark:text-gray-300 p-3 space-y-3 font-medium">
           {navItems.map((item) => (
             <li key={item.id}>
-              <Link
-                to={item.id}
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-60}
-                activeClass="text-black dark:text-white underline"
-                className="block cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
+              {item.id === "intro" ? (
+                <span
+                  onClick={() => {
+                    setIsOpen(false);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="block cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
+                >
+                  {item.label}
+                </span>
+              ) : (
+                <Link
+                  to={item.id}
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  offset={-50}
+                  activeClass="text-black dark:text-white underline"
+                  className="block cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
