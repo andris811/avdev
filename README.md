@@ -17,7 +17,7 @@ This portfolio was built with the following tools and technologies:
 - **Frontend:**
   - React
   - Tailwind CSS
-  - TypeScript
+  - JavaScript
   - Framer Motion
   - React Scroll
   - React Hook Form
