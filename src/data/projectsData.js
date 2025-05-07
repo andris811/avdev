@@ -36,12 +36,13 @@ const projectsData = [
     ],
   },
   {
-    title: "Quote Generator",
-    description: "A full-stack app built with React and Node.js.",
+    title: "QuoteLift",
+    description:
+      "QuoteLift is a full-stack web app that displays inspirational quotes and lets users save, pin, and share their favorites. It features a React frontend and an Express + MongoDB backend for persistent quote storage.",
     image: "",
-    liveLink: "",
-    repoLink: "",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
+    liveLink: "https://quote-generator-lovat-xi.vercel.app/",
+    repoLink: "https://github.com/andris811/quote-generator",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Express", "MongoDB"],
   },
   {
     title: "AI Went Crazy",
