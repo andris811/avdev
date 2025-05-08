@@ -39,7 +39,10 @@ const projectsData = [
     title: "QuoteLift",
     description:
       "QuoteLift is a full-stack web app that displays inspirational quotes and lets users save, pin, and share their favorites. It features a React frontend and an Express + MongoDB backend for persistent quote storage.",
-    image: "",
+    images: [
+      `${process.env.PUBLIC_URL}/images/quoteGenerator/quoteLift_1.png`,
+      `${process.env.PUBLIC_URL}/images/quoteGenerator/quoteLift_2.png`,
+    ],
     liveLink: "https://quote-generator-lovat-xi.vercel.app/",
     repoLink: "https://github.com/andris811/quote-generator",
     tech: ["React", "TypeScript", "Tailwind CSS", "Express", "MongoDB"],
