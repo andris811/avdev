@@ -49,11 +49,31 @@ const projectsData = [
   },
   {
     title: "AI Went Crazy",
-    description: "A full-stack app built with React and Node.js.",
+    description:
+      "A retro-styled web app that delivers glitchy quotes, chaotic advice, mood scans, and ridiculous truth-or-dare prompts—showcasing what happens when AI goes hilariously off-script.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/ai-went-crazy/ai_went_crazy_1.png`,
+      `${process.env.PUBLIC_URL}/images/ai-went-crazy/ai_went_crazy_2.png`,
+    ],
+    liveLink: "https://andris811.github.io/ai-went-crazy/",
+    repoLink: "https://github.com/andris811/ai-went-crazy",
+    tech: ["React", "Vite", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    title: "Flashcard App",
+    description: "A sleek and interactive flashcard app that helps users review and memorize information through animated card flipping and custom categories.",
     image: "",
     liveLink: "",
     repoLink: "",
     tech: ["React", "Node.js", "Express", "MongoDB"],
+  },
+  {
+    title: "Pomodoro Timer",
+    description: "A full-stack app built with React and Node.js.",
+    image: "",
+    liveLink: "",
+    repoLink: "",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
   },
 ];
 
