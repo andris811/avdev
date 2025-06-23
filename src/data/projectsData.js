@@ -81,7 +81,7 @@ const projectsData = [
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_2.png`,
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_3.png`,
     ],
-    liveLink: "",
+    liveLink: "https://andris811.github.io/pomodoroTimer/",
     repoLink: "https://github.com/andris811/pomodoroTimer",
     tech: ["React", "TypeScript", "Tailwind CSS"],
   },
