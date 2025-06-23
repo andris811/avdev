@@ -60,9 +60,9 @@ const projectsData = [
     tech: ["React", "Vite", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Flashcard App",
+    title: "Flashly - Flashcard App",
     description: "A sleek and interactive flashcard app that helps users review and memorize information through animated card flipping and custom categories.",
-    image: [
+    images: [
       `${process.env.PUBLIC_URL}/images/flashly/flashly_1.png`,
       `${process.env.PUBLIC_URL}/images/flashly/flashly_2.png`,
       `${process.env.PUBLIC_URL}/images/flashly/flashly_3.png`,
@@ -76,7 +76,7 @@ const projectsData = [
   {
     title: "Pomodoro Timer",
     description: "A full-stack app built with React and Node.js.",
-    image: [
+    images: [
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_1.png`,
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_2.png`,
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_3.png`,
