@@ -75,7 +75,7 @@ const projectsData = [
   },
   {
     title: "Pomodoro Timer",
-    description: "A full-stack app built with React and Node.js.",
+    description: "A clean and responsive Pomodoro timer built with React and Tailwind CSS. It features focus and break sessions, automatic transitions, a countdown prompt, session tracking, and smooth UI feedback to help users stay productive.",
     images: [
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_1.png`,
       `${process.env.PUBLIC_URL}/images/pomodoro/pomodoro_2.png`,
