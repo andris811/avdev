@@ -86,12 +86,17 @@ const projectsData = [
     tech: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Weather App",
+    title: "HAZE Weather",
     description: "API integration, Tailwind UI",
-    image: "",
-    liveLink: "",
-    repoLink: "",
-    tech: ["React", "TypeScript", "Tailwind CSS"],
+    images: [
+      `${process.env.PUBLIC_URL}/images/haze_weather/haze_1.png`,
+      `${process.env.PUBLIC_URL}/images/haze_weather/haze_2.png`,
+      `${process.env.PUBLIC_URL}/images/haze_weather/haze_3.png`,
+      `${process.env.PUBLIC_URL}/images/haze_weather/haze_4.png`,
+    ],
+    liveLink: "https://haze-weather.vercel.app/",
+    repoLink: "https://github.com/andris811/Haze-Weather",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Mood Tracker",
