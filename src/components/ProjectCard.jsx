@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -11,38 +12,68 @@ const ProjectCard = ({
   repoLink,
   tech,
 }) => {
+  // Create object URLs and store them for cleanup
+  const processedImages = useMemo(() => {
+    if (!images) return null;
+
+    return images.map((img) => {
+      if (typeof img === "string") {
+        return { url: img, isObjectURL: false };
+      } else {
+        return { url: URL.createObjectURL(img), isObjectURL: true };
+      }
+    });
+  }, [images]);
+
+  // Clean up object URLs on unmount
+  useEffect(() => {
+    return () => {
+      if (processedImages) {
+        processedImages.forEach(({ url, isObjectURL }) => {
+          if (isObjectURL) {
+            URL.revokeObjectURL(url);
+          }
+        });
+      }
+    };
+  }, [processedImages]);
+
   const renderImages = () => {
-    if (images && images.length > 1) {
+    if (processedImages && processedImages.length > 1) {
       return (
         <Carousel
           showThumbs={false}
           infiniteLoop
           showStatus={false}
-          autoPlay
-          interval={3000}
+          autoPlay={false}
           transitionTime={600}
-          stopOnHover
           showArrows
+          useKeyboardArrows
+          swipeable
+          emulateTouch
           className="mb-4 rounded-md h-56"
+          ariaLabel={`${title} project images`}
         >
-          {images.map((img, i) => (
+          {processedImages.map(({ url }, i) => (
             <div key={i} className="h-56">
               <img
-                src={typeof img === "string" ? img : URL.createObjectURL(img)}
-                alt={`${title} ${i + 1}`}
+                src={url}
+                alt={`${title} screenshot ${i + 1} of ${processedImages.length}`}
                 className="h-full w-full object-cover rounded-md"
+                loading="lazy"
               />
             </div>
           ))}
         </Carousel>
       );
-    } else if (image || (images && images.length === 1)) {
-      const fallback = images?.[0] || image;
+    } else if (image || (processedImages && processedImages.length === 1)) {
+      const fallback = processedImages?.[0]?.url || image;
       return (
         <img
           src={fallback}
-          alt={title}
+          alt={`${title} project screenshot`}
           className="h-56 w-full object-cover rounded-md mb-4"
+          loading="lazy"
         />
       );
     } else {
