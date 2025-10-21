@@ -55,11 +55,11 @@ const ProjectCard = ({
           ariaLabel={`${title} project images`}
         >
           {processedImages.map(({ url }, i) => (
-            <div key={i} className="h-56">
+            <div key={i} className="h-56 bg-gray-200 dark:bg-gray-700 rounded-md flex items-center justify-center">
               <img
                 src={url}
                 alt={`${title} screenshot ${i + 1} of ${processedImages.length}`}
-                className="h-full w-full object-cover rounded-md"
+                className="h-full w-auto object-contain rounded-md"
                 loading="lazy"
               />
             </div>
@@ -69,12 +69,14 @@ const ProjectCard = ({
     } else if (image || (processedImages && processedImages.length === 1)) {
       const fallback = processedImages?.[0]?.url || image;
       return (
-        <img
-          src={fallback}
-          alt={`${title} project screenshot`}
-          className="h-56 w-full object-cover rounded-md mb-4"
-          loading="lazy"
-        />
+        <div className="h-56 bg-gray-200 dark:bg-gray-700 rounded-md mb-4 flex items-center justify-center">
+          <img
+            src={fallback}
+            alt={`${title} project screenshot`}
+            className="h-full w-auto object-contain rounded-md"
+            loading="lazy"
+          />
+        </div>
       );
     } else {
       return (

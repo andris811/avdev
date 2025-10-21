@@ -1,5 +1,19 @@
 const projectsData = [
   {
+    title: "Grivus - Habit Tracker",
+    description:
+      "A native iOS habit tracker with Apple Health integration. Features include customizable widgets, streak tracking, habit pause and archive functionality, and a clean SwiftUI interface for building and maintaining healthy habits.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/grivus/grivus_1.png`,
+      `${process.env.PUBLIC_URL}/images/grivus/grivus_2.png`,
+      `${process.env.PUBLIC_URL}/images/grivus/grivus_3.png`,
+      `${process.env.PUBLIC_URL}/images/grivus/grivus_4.png`,
+    ],
+    liveLink: "https://apps.apple.com/hu/app/grivus-habit-tracker/id6752882832",
+    repoLink: "",
+    tech: ["Swift", "SwiftUI", "UIKit", "HealthKit", "iOS Widgets"],
+  },
+  {
     title: "Varga Photography",
     description:
       "A responsive gallery website built with vanilla JS. Features include multilingual support (English/Hungarian/Chinese), dark/light mode toggle, categorized galleries with lazy image loading, and a Formspree contact form.",
