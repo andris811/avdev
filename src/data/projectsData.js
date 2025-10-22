@@ -9,8 +9,8 @@ const projectsData = [
       `${process.env.PUBLIC_URL}/images/grivus/grivus_3.png`,
       `${process.env.PUBLIC_URL}/images/grivus/grivus_4.png`,
     ],
-    liveLink: "https://apps.apple.com/hu/app/grivus-habit-tracker/id6752882832",
-    repoLink: "",
+    liveLink: "https://grivus.vercel.app",
+    repoLink: "https://apps.apple.com/hu/app/grivus-habit-tracker/id6752882832",
     tech: ["Swift", "SwiftUI", "UIKit", "HealthKit", "iOS Widgets"],
   },
   {
