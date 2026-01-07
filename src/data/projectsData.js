@@ -28,6 +28,19 @@ const projectsData = [
     tech: ["HTML", "CSS", "JavaScript", "Formspree", "JSON"],
   },
   {
+    title: "Szegedin Highflyer Breeding",
+    description:
+      "A responsive multi-language website for a Szegedi Keringő pigeon breeder, built with Astro. Features include image galleries, breed and breeder information, contact forms, available in Hungarian, English, German, Romanian, and Serbian.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/szegedikeringo/szegedikeringo1.png`,
+      `${process.env.PUBLIC_URL}/images/szegedikeringo/szegedikeringo2.png`,
+      `${process.env.PUBLIC_URL}/images/szegedikeringo/szegedikeringo3.png`,
+    ],
+    liveLink: "https://szegedikeringo.vercel.app",
+    repoLink: "https://github.com/andris811/szegedikeringo",
+    tech: ["Astro", "TypeScript", "Tailwind CSS"],
+  },
+  {
     title: "Compas",
     description:
       "Compas is a responsive travel companion platform built with Ruby on Rails. Features include user profiles, travel plan sharing, and companion matching to help users connect with like-minded travelers.",
