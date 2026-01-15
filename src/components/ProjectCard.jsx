@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaAppStore } from "react-icons/fa";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -37,6 +37,9 @@ const ProjectCard = ({
       }
     };
   }, [processedImages]);
+
+  // Check if this is an iOS app
+  const isIOSApp = tech?.includes("Swift");
 
   const renderImages = () => {
     if (processedImages && processedImages.length > 1) {
@@ -129,7 +132,7 @@ const ProjectCard = ({
             className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition"
           >
             <FaExternalLinkAlt className="text-sm" />
-            <span className="text-sm font-semibold">Live</span>
+            <span className="text-sm font-semibold">{isIOSApp ? "Product Page" : "Live"}</span>
           </a>
         ) : (
           <span className="px-3 py-1.5 rounded-md bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold opacity-70 cursor-not-allowed">
@@ -144,12 +147,12 @@ const ProjectCard = ({
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
           >
-            <FaGithub className="text-sm" />
-            <span className="text-sm font-semibold">Code</span>
+            {isIOSApp ? <FaAppStore className="text-sm" /> : <FaGithub className="text-sm" />}
+            <span className="text-sm font-semibold">{isIOSApp ? "AppStore" : "Code"}</span>
           </a>
         ) : (
           <span className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold opacity-70 cursor-not-allowed">
-            <FaGithub className="text-sm" />
+            {isIOSApp ? <FaAppStore className="text-sm" /> : <FaGithub className="text-sm" />}
             <span>Coming Soon</span>
           </span>
         )}
