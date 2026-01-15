@@ -14,6 +14,18 @@ const projectsData = [
     tech: ["Swift", "SwiftUI", "UIKit", "HealthKit", "iOS Widgets"],
   },
   {
+    title: "OneThing Daily",
+    description:
+      "A mindfulness-inspired iOS app designed to reduce pressure by focusing on just one daily intention.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/onething/onething1.png`,
+      `${process.env.PUBLIC_URL}/images/onething/onething2.png`,
+    ],
+    liveLink: "https://onething-daily.vercel.app",
+    repoLink: "https://apps.apple.com/hu/app/onething-daily/id6757373350",
+    tech: ["Swift", "SwiftUI", "UIKit", "iOS Widgets"],
+  },
+  {
     title: "Varga Photography",
     description:
       "A responsive gallery website built with vanilla JS. Features include multilingual support (English/Hungarian/Chinese), dark/light mode toggle, categorized galleries with lazy image loading, and a Formspree contact form.",
