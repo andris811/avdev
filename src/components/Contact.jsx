@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 const Contact = () => {
@@ -37,41 +39,86 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="flex items-center justify-center px-6 pt-16 pb-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative max-w-xl w-full p-8 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10"
+        className="relative max-w-5xl w-full p-8 md:p-12 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10"
       >
         {/* Header */}
-        <h2 className="text-3xl font-bold mb-2 text-center">Let’s Connect</h2>
-        <p className="text-center text-sm text-gray-600 dark:text-gray-400 mb-6">
-          Whether it's freelance work, collaboration, or a tech question — feel
-          free to reach out!
-        </p>
-
-        {/* Social icons */}
-        <div className="flex justify-center gap-6 mb-8 text-gray-600 dark:text-gray-300">
-          <a
-            href="https://github.com/andris811"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-black transition"
-          >
-            <GitHubIcon />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/andrasv89/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-600 transition"
-          >
-            <LinkedInIcon />
-          </a>
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+            Let's Connect
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          </p>
         </div>
+
+        {/* Two Column Layout */}
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Left Column - Contact Info */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+                Get In Touch
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                Feel free to reach out through the form or connect with me on social media. I typically respond within 24-48 hours.
+              </p>
+            </div>
+
+            {/* Social Links */}
+            <div>
+              <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-4">Connect on Social</h4>
+              <div className="flex gap-4">
+                <a
+                  href="https://github.com/andris811"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+                >
+                  <GitHubIcon fontSize="small" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/andrasv89/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+                >
+                  <LinkedInIcon fontSize="small" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Location & Availability */}
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faLocationDot} className="text-purple-600 dark:text-purple-400" />
+                  <div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Location</span>
+                    <p className="text-gray-700 dark:text-gray-300">Shanghai, China</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faBriefcase} className="text-purple-600 dark:text-purple-400" />
+                  <div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Status</span>
+                    <p className="text-gray-700 dark:text-gray-300">Open to opportunities</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Form */}
+          <div>
 
         {/* Form / Confirmation */}
         {submitted ? (
@@ -143,12 +190,14 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 font-semibold py-2 rounded hover:scale-[1.02] transition"
+              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-shadow duration-200"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         )}
+          </div>
+        </div>
 
         {/* Form Glow Effect */}
         <div

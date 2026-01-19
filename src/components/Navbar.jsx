@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
-  );
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/" || location.pathname === "/avdev" || location.pathname === "/avdev/";
 
   //   Scroll detection
   useEffect(() => {
@@ -19,13 +18,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Theme sync
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -51,16 +43,33 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
   const navItems = [
     { id: "intro", label: "Home" },
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" },
   ];
+
+  const handleNavClick = (itemId) => {
+    if (!isHomePage) {
+      // If not on home page, navigate to home first
+      navigate("/");
+      // Wait for navigation, then scroll
+      setTimeout(() => {
+        if (itemId !== "intro") {
+          const element = document.getElementById(itemId);
+          if (element) {
+            const offset = -80;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: elementPosition + offset, behavior: "smooth" });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 100);
+      setIsOpen(false);
+    }
+  };
 
   return (
     <nav
@@ -70,72 +79,39 @@ const Navbar = () => {
           : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Site logo */}
-        <span
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center cursor-pointer"
-        >
-          <span className="text-2xl font-mono tracking-wide flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-md shadow-sm">
-            <span className="animate-pulse text-blue-500">&lt;/&gt;</span>
-            <span className="font-semibold text-gray-800 dark:text-gray-100">
-              AVDev
-            </span>
-          </span>
-        </span>
-
-        {/* Desktop nav + theme toggle */}
-        <div className="flex items-center space-x-4">
-          <ul className="hidden md:flex space-x-6 text-base md:text-lg xl:text-xl text-gray-700 dark:text-gray-300 font-medium">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-center items-center relative">
+        {/* Desktop nav */}
+        <div className="flex items-center">
+          <ul className="hidden md:flex space-x-12 text-base md:text-lg xl:text-xl text-gray-700 dark:text-gray-300 font-medium">
             {navItems.map((item) => (
               <li key={item.id}>
-                {item.id === "intro" ? (
-                  <span
-                    onClick={() =>
-                      window.scrollTo({ top: 0, behavior: "smooth" })
-                    }
-                    className="cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
-                  >
-                    {item.label}
-                  </span>
-                ) : (
-                  <Link
+                {isHomePage ? (
+                  <ScrollLink
                     to={item.id}
                     smooth={true}
                     duration={500}
                     spy={true}
-                    offset={item.id === "contact" ? 95 : -60} // ⬅️ Adjust only for contact
-                    activeClass="text-black dark:text-white underline"
-                    className="cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
+                    offset={-80}
+                    activeClass="text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400 py-1"
+                    className="cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
                   >
                     {item.label}
-                  </Link>
+                  </ScrollLink>
+                ) : (
+                  <span
+                    onClick={() => handleNavClick(item.id)}
+                    className="cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                  >
+                    {item.label}
+                  </span>
                 )}
               </li>
             ))}
           </ul>
-
-          {/* Theme toggle button */}
-          <button
-            onClick={toggleTheme}
-            className="hidden md:block text-gray-700 dark:text-gray-300 hover:scale-110 transition"
-            aria-label="Toggle theme"
-          >
-            <FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
-          </button>
         </div>
 
-        {/* Mobile toggle + hamburger */}
-        <div className="md:hidden flex items-center space-x-4 ml-4">
-          {/* Theme toggle on mobile */}
-          <button
-            onClick={toggleTheme}
-            className="text-gray-700 dark:text-gray-300 hover:scale-110 transition"
-            aria-label="Toggle theme"
-          >
-            <FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
-          </button>
-
+        {/* Mobile hamburger - positioned absolutely on right */}
+        <div className="md:hidden absolute right-4 flex items-center">
           {/* Hamburger menu */}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -180,29 +156,26 @@ const Navbar = () => {
         <ul className="flex flex-col items-start text-base md:text-lg text-gray-700 dark:text-gray-300 p-3 space-y-3 font-medium">
           {navItems.map((item) => (
             <li key={item.id}>
-              {item.id === "intro" ? (
-                <span
-                  onClick={() => {
-                    setIsOpen(false);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="block cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
-                >
-                  {item.label}
-                </span>
-              ) : (
-                <Link
+              {isHomePage ? (
+                <ScrollLink
                   to={item.id}
                   smooth={true}
                   duration={500}
                   spy={true}
                   offset={-30}
-                  activeClass="text-black dark:text-white underline"
-                  className="block cursor-pointer transition duration-300 hover:text-black dark:hover:text-white"
+                  activeClass="text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2"
+                  className="block cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </ScrollLink>
+              ) : (
+                <span
+                  onClick={() => handleNavClick(item.id)}
+                  className="block cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                >
+                  {item.label}
+                </span>
               )}
             </li>
           ))}

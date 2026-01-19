@@ -1,133 +1,123 @@
-import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { FaCode, FaMobileAlt, FaPalette, FaServer } from "react-icons/fa";
 
 const About = () => {
+  const services = [
+    {
+      icon: <FaCode className="text-4xl mb-4 text-purple-600 dark:text-purple-400" />,
+      title: "Full-Stack Development",
+      description: "Building scalable web applications with modern frameworks like React, Next.js, Node.js, and database solutions.",
+    },
+    {
+      icon: <FaMobileAlt className="text-4xl mb-4 text-blue-600 dark:text-blue-400" />,
+      title: "Mobile Development",
+      description: "Creating native iOS apps with Swift and SwiftUI, focusing on clean UX and seamless performance.",
+    },
+    {
+      icon: <FaPalette className="text-4xl mb-4 text-pink-600 dark:text-pink-400" />,
+      title: "UI/UX Design",
+      description: "Designing beautiful, intuitive interfaces with Figma and bringing them to life with modern CSS frameworks.",
+    },
+    {
+      icon: <FaServer className="text-4xl mb-4 text-green-600 dark:text-green-400" />,
+      title: "Backend & APIs",
+      description: "Developing robust REST APIs and backend systems with Express, NestJS, Django, and Spring Boot.",
+    },
+  ];
+
+  const techStack = [
+    "React", "Next.js", "TypeScript", "Node.js", "Swift",
+    "Python", "Java", "PostgreSQL", "MongoDB", "Tailwind CSS"
+  ];
+
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="relative max-w-6xl w-full p-8 rounded-lg shadow-md bg-white dark:bg-gray-900 z-10"
-      >
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left column – about text & soft skills */}
-          <div>
-            <h2 className="text-3xl font-bold mb-6">ABOUT ME</h2>
-            <p className="mb-4">
-              I'm Andras from Hungary, a full-stack developer based in Shanghai
-              with a background in education and environmental science. I
-              transitioned into tech after years of working in international
-              settings and managing teams. I enjoy blending logic and creativity
-              to build beautiful, functional web apps.
-            </p>
-            <p className="mb-4">
-              I'm highly adaptable, love working across cultures, and always
-              eager to learn new technologies. Outside of coding, I’m passionate
-              about photography, gaming, and exploring the world with my
-              fiancée. I also have basic experience with mobile app development
-              using Swift and indie game development using Godot.
-            </p>
+      <div className="max-w-7xl w-full">
+        {/* Section Header */}
+        <div className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+            What I Do
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            I'm a full-stack developer from Hungary, based in Shanghai. I specialize in creating elegant,
+            high-performance applications that solve real-world problems.
+          </p>
+        </div>
 
-            <div className="mt-6">
-              <h3 className="text-xl font-semibold mb-2">STRENGTHS</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Cross-cultural communication & teamwork</li>
-                <li>Fast learner and detail-oriented</li>
-                <li>Creative problem solving</li>
-                <li>
-                  Strong foundation in both frontend & backend development
-                </li>
-              </ul>
+        {/* Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 h-full border border-gray-100 dark:border-gray-700"
+            >
+              {service.icon}
+              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                {service.description}
+              </p>
             </div>
+          ))}
+        </div>
+
+        {/* Background & Strengths */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16"
+        >
+          <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold mb-4">My Background</h3>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+              With a background in education and environmental science, I transitioned into tech after
+              years of working in international settings and managing teams. I bring a unique perspective
+              that blends logic, creativity, and cross-cultural communication.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              Outside of coding, I'm passionate about photography, gaming, and exploring the world.
+              I'm always eager to learn new technologies and take on challenging projects.
+            </p>
           </div>
 
-          {/* Right column – tech stack & certifications */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">TECH STACK</h3>
-
-            <div className="space-y-4 text-sm">
+          <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold mb-4">Key Strengths</h3>
+            <ul className="space-y-3">
               {[
-                [
-                  "Frontend",
-                  [
-                    "React",
-                    "Next.js",
-                    "JavaScript",
-                    "TypeScript",
-                    "Tailwind CSS",
-                  ],
-                ],
-                [
-                  "Backend",
-                  ["Node.js", "Express", "NestJS", "MongoDB", "PostgreSQL"],
-                ],
-                ["Languages", ["Python", "Java", "Ruby", "Swift"]],
-                [
-                  "Frameworks",
-                  [
-                    "Flask",
-                    "Django",
-                    "FastAPI",
-                    "Spring Boot",
-                    "Ruby on Rails",
-                  ],
-                ],
-                ["Tools", ["Git", "GitHub", "VS Code", "Vite", "npm"]],
-                [
-                  "Creative Tools",
-                  [
-                    "Photoshop",
-                    "Blender",
-                    "DaVinci Resolve",
-                    "Figma",
-                    "Lightroom",
-                    "Capture One",
-                  ],
-                ],
-                ["Game & Mobile", ["Godot", "Xcode"]],
-              ].map(([label, items]) => (
-                <div key={label}>
-                  <p className="font-semibold mb-1">{label}</p>
-                  <div className="flex flex-wrap gap-3 text-gray-700 dark:text-gray-300 text-sm font-semibold">
-                    {items.map((item) => (
-                      <span
-                        key={item}
-                        className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-md"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                "Cross-cultural communication & teamwork",
+                "Fast learner and detail-oriented",
+                "Creative problem solving",
+                "Strong foundation in both frontend & backend",
+                "User-focused design thinking"
+              ].map((strength, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <span className="text-purple-600 dark:text-purple-400 mt-1">✓</span>
+                  <span className="text-gray-700 dark:text-gray-300">{strength}</span>
+                </li>
               ))}
-            </div>
-
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-2">Certificates</h3>
-              <ul className="text-sm space-y-2">
-                <li>✔️ Web Development Bootcamp – Le Wagon Shanghai</li>
-                <li>✔️ Angela Yu’s Full-Stack Development Bootcamp</li>
-                <li>✔️ Java Programming – Training360 Hungary</li>
-                <li>✔️ Harvard CS50x (in progress)</li>
-              </ul>
-            </div>
+            </ul>
           </div>
         </div>
 
-        {/* Glow effect to match contact */}
-        <div
-          className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-purple-400/10 to-blue-400/10 blur-xl pointer-events-none"
-          aria-hidden="true"
-        ></div>
-      </motion.div>
-      
-      {/* Scroll Hint – show only on md+ screens */}
-      <div className="hidden md:block mt-8 animate-bounce text-gray-400 dark:text-gray-500 z-20">
+        {/* De-emphasized Tech Stack */}
+        <div className="text-center"
+        >
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Technologies I work with</p>
+          <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
+            {techStack.map((tech) => (
+              <span
+                key={tech}
+                className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full border border-gray-200 dark:border-gray-700"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Hint */}
+      <div className="hidden md:block mt-12 animate-bounce text-gray-400 dark:text-gray-500">
         <Link to="projects" smooth={true} duration={500} offset={-60}>
           <span className="text-2xl md:text-3xl cursor-pointer">⌄</span>
         </Link>
