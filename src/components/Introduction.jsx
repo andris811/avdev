@@ -1,24 +1,8 @@
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-scroll";
 
 const Introduction = () => {
-  const [greeting, setGreeting] = useState("Hello");
-
-  useEffect(() => {
-    const hour = new Date().getHours();
-
-    if (hour >= 5 && hour < 12) {
-      setGreeting("Good morning");
-    } else if (hour >= 12 && hour < 18) {
-      setGreeting("Good afternoon");
-    } else if (hour >= 18 && hour < 22) {
-      setGreeting("Good evening");
-    } else {
-      setGreeting("Hello night owl");
-    }
-  }, []);
 
   return (
     <section
@@ -53,7 +37,7 @@ const Introduction = () => {
             </p>
 
             <h1 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {greeting}, <br />
+              Hello, <br />
               I'm Andras
             </h1>
 

@@ -103,7 +103,7 @@ const Navbar = () => {
                     offset={-80}
                     spyThrottle={100}
                     activeClass="text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400 py-1"
-                    className="cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                    className="inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md"
                     hashSpy={true}
                     isDynamic={true}
                   >
@@ -112,7 +112,7 @@ const Navbar = () => {
                 ) : (
                   <span
                     onClick={() => handleNavClick(item.id)}
-                    className="cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                    className="cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md inline-block"
                   >
                     {item.label}
                   </span>
@@ -177,7 +177,7 @@ const Navbar = () => {
                   offset={-80}
                   spyThrottle={100}
                   activeClass="text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2"
-                  className="block cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                  className="block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left"
                   onClick={() => setIsOpen(false)}
                   hashSpy={true}
                   isDynamic={true}
@@ -187,7 +187,7 @@ const Navbar = () => {
               ) : (
                 <span
                   onClick={() => handleNavClick(item.id)}
-                  className="block cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                  className="block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left"
                 >
                   {item.label}
                 </span>
