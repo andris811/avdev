@@ -39,7 +39,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="flex items-center justify-center px-6 pt-16 pb-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="min-h-screen flex items-center justify-center px-6 pt-16 pb-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}

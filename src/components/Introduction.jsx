@@ -101,7 +101,7 @@ const Introduction = () => {
 
       {/* Scroll Hint */}
       <div className="hidden md:block absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-gray-400 dark:text-gray-500">
-        <Link to="about" smooth={true} duration={500} offset={-60}>
+        <Link to="about" smooth={true} duration={500} offset={-80}>
           <span className="text-2xl md:text-3xl cursor-pointer">⌄</span>
         </Link>
       </div>

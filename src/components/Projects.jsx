@@ -10,7 +10,8 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative px-6 py-8 pb-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      className="relative min-h-screen px-6 py-8 pb-16 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+      style={{ scrollMarginTop: '60px' }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -24,7 +25,7 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid - Only 3 projects */}
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-3">
           {featuredProjects.map((project, index) => (
             <div key={index}>
               <ProjectCard {...project} />

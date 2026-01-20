@@ -56,16 +56,20 @@ const Navbar = () => {
       navigate("/");
       // Wait for navigation, then scroll
       setTimeout(() => {
-        if (itemId !== "intro") {
-          const element = document.getElementById(itemId);
-          if (element) {
-            const offset = -80;
-            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({ top: elementPosition + offset, behavior: "smooth" });
+        // First scroll to top instantly to reset position
+        window.scrollTo({ top: 0, behavior: "instant" });
+
+        // Then scroll to target section if not intro
+        setTimeout(() => {
+          if (itemId !== "intro") {
+            const element = document.getElementById(itemId);
+            if (element) {
+              const offset = -80;
+              const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+              window.scrollTo({ top: elementPosition + offset, behavior: "smooth" });
+            }
           }
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        }, 50);
       }, 100);
       setIsOpen(false);
     }
@@ -80,6 +84,11 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-center items-center relative">
+        {/* Mobile name - left side */}
+        <div className="md:hidden absolute left-4">
+          <span className="text-lg font-semibold text-gray-800 dark:text-gray-100">Andras</span>
+        </div>
+
         {/* Desktop nav */}
         <div className="flex items-center">
           <ul className="hidden md:flex space-x-12 text-base md:text-lg xl:text-xl text-gray-700 dark:text-gray-300 font-medium">
@@ -92,8 +101,11 @@ const Navbar = () => {
                     duration={500}
                     spy={true}
                     offset={-80}
+                    spyThrottle={100}
                     activeClass="text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400 py-1"
                     className="cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
+                    hashSpy={true}
+                    isDynamic={true}
                   >
                     {item.label}
                   </ScrollLink>
@@ -162,10 +174,13 @@ const Navbar = () => {
                   smooth={true}
                   duration={500}
                   spy={true}
-                  offset={-30}
+                  offset={-80}
+                  spyThrottle={100}
                   activeClass="text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2"
                   className="block cursor-pointer transition duration-200 hover:text-purple-600 dark:hover:text-purple-400"
                   onClick={() => setIsOpen(false)}
+                  hashSpy={true}
+                  isDynamic={true}
                 >
                   {item.label}
                 </ScrollLink>

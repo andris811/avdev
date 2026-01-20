@@ -10,9 +10,7 @@ const HomePage = () => {
     <main className="pt-20">
       <Introduction />
       <About />
-      <section id="projects">
-        <Projects />
-      </section>
+      <Projects />
       <Contact />
       <ScrollToTopButton />
     </main>

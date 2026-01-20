@@ -109,7 +109,7 @@ const ProjectCard = ({
   };
 
   return (
-    <div className="relative z-10 flex flex-col justify-between bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 h-full min-h-[580px] border border-gray-100 dark:border-gray-700"
+    <div className="relative z-10 flex flex-col justify-between bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out h-full min-h-[580px] border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:scale-[1.02] overflow-visible"
     >
       <div>
         {renderImages()}
@@ -141,7 +141,10 @@ const ProjectCard = ({
                 +{tech.length - 4} more
               </span>
               {showAllTech && (
-                <div className="absolute bottom-full left-0 mb-2 z-50 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-xl p-3 min-w-[200px]">
+                <div
+                  className="absolute bottom-full left-0 mb-2 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-2xl p-3 min-w-[200px] max-w-[250px] pointer-events-none"
+                  style={{ zIndex: 9999 }}
+                >
                   <p className="text-xs font-semibold mb-2 text-gray-700 dark:text-gray-200">All Technologies:</p>
                   <div className="flex flex-wrap gap-1.5">
                     {tech.slice(4).map((item) => (

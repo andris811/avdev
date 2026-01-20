@@ -4,22 +4,22 @@ import { FaCode, FaMobileAlt, FaPalette, FaServer } from "react-icons/fa";
 const About = () => {
   const services = [
     {
-      icon: <FaCode className="text-4xl mb-4 text-purple-600 dark:text-purple-400" />,
+      icon: <FaCode className="text-4xl mb-4 text-purple-600 dark:text-purple-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "Full-Stack Development",
       description: "Building scalable web applications with modern frameworks like React, Next.js, Node.js, and database solutions.",
     },
     {
-      icon: <FaMobileAlt className="text-4xl mb-4 text-blue-600 dark:text-blue-400" />,
+      icon: <FaMobileAlt className="text-4xl mb-4 text-blue-600 dark:text-blue-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "Mobile Development",
       description: "Creating native iOS apps with Swift and SwiftUI, focusing on clean UX and seamless performance.",
     },
     {
-      icon: <FaPalette className="text-4xl mb-4 text-pink-600 dark:text-pink-400" />,
+      icon: <FaPalette className="text-4xl mb-4 text-pink-600 dark:text-pink-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "UI/UX Design",
       description: "Designing beautiful, intuitive interfaces with Figma and bringing them to life with modern CSS frameworks.",
     },
     {
-      icon: <FaServer className="text-4xl mb-4 text-green-600 dark:text-green-400" />,
+      icon: <FaServer className="text-4xl mb-4 text-green-600 dark:text-green-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "Backend & APIs",
       description: "Developing robust REST APIs and backend systems with Express, NestJS, Django, and Spring Boot.",
     },
@@ -53,7 +53,7 @@ const About = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 h-full border border-gray-100 dark:border-gray-700"
+              className="group relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out h-full border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:scale-105"
             >
               {service.icon}
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -118,7 +118,7 @@ const About = () => {
 
       {/* Scroll Hint */}
       <div className="hidden md:block mt-12 animate-bounce text-gray-400 dark:text-gray-500">
-        <Link to="projects" smooth={true} duration={500} offset={-60}>
+        <Link to="projects" smooth={true} duration={500} offset={-80}>
           <span className="text-2xl md:text-3xl cursor-pointer">⌄</span>
         </Link>
       </div>
