@@ -16,7 +16,7 @@ const projectsData = [
   {
     title: "OneThing Daily",
     description:
-      "A mindfulness-inspired iOS app designed to reduce pressure by focusing on just one daily intention.",
+      "A minimalist iOS app that helps users focus on a single meaningful intention each day. It replaces habit streaks and productivity pressure with calm reminders, evening reflection, and simple journaling — designed to support intentional living, not optimization.",
     images: [
       `${process.env.PUBLIC_URL}/images/onething/onething1.png`,
       `${process.env.PUBLIC_URL}/images/onething/onething2.png`,
@@ -24,6 +24,18 @@ const projectsData = [
     liveLink: "https://onething-daily.vercel.app",
     repoLink: "https://apps.apple.com/hu/app/onething-daily/id6757373350",
     tech: ["Swift", "SwiftUI", "UIKit", "iOS Widgets"],
+  },
+  {
+    title: "Between Days",
+    description:
+      "A minimal iOS app designed for people who live alone. With one daily tap, users can quietly signal that they’re okay. If check-ins stop for several days, the app automatically notifies a trusted contact — offering peace of mind without tracking, social pressure, or unnecessary notifications.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/betweendays/betweendays_1.png`,
+      `${process.env.PUBLIC_URL}/images/betweendays/betweendays_2.png`,
+    ],
+    liveLink: "https://www.betweendays.app",
+    repoLink: "https://apps.apple.com/hu/app/between-days/id6757996962",
+    tech: ["Swift", "SwiftUI", "UIKit", "SendGrid"],
   },
   {
     title: "Varga Photography",
