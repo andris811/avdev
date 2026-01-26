@@ -11,7 +11,7 @@ const projectsData = [
     ],
     liveLink: "https://grivus.vercel.app",
     repoLink: "https://apps.apple.com/hu/app/grivus-habit-tracker/id6752882832",
-    tech: ["Swift", "SwiftUI", "UIKit", "HealthKit", "iOS Widgets"],
+    tech: ["Swift", "SwiftUI", "UIKit", "HealthKit", "CloudKit", "iOS Widgets"],
   },
   {
     title: "OneThing Daily",
@@ -35,7 +35,7 @@ const projectsData = [
     ],
     liveLink: "https://www.betweendays.app",
     repoLink: "https://apps.apple.com/hu/app/between-days/id6757996962",
-    tech: ["Swift", "SwiftUI", "UIKit", "SendGrid"],
+    tech: ["Swift", "SwiftUI", "UIKit", "Railway", "SendGrid"],
   },
   {
     title: "Varga Photography",
