@@ -26,6 +26,17 @@ const projectsData = [
     tech: ["Swift", "SwiftUI", "UIKit", "iOS Widgets"],
   },
   {
+    title: "Skora: Tabletop",
+    description:
+      "Minimalist iOS scorekeeper for board games. Gesture-based scoring, adaptive rotated layouts for tabletop play, local multiplayer, game history & stats tracking. SwiftUI + MVVM. Designed for quick, intuitive use during games without distractions.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/skora/skora_1.png`,
+    ],
+    liveLink: "https://skora-tabletop.vercel.app/en",
+    repoLink: "https://apps.apple.com/hu/app/skora-tabletop/id6759514964",
+    tech: ["Swift", "SwiftUI", "UIKit"],
+  },
+  {
     title: "Between Days",
     description:
       "A minimal iOS app designed for people who live alone. With one daily tap, users can quietly signal that they’re okay. If check-ins stop for several days, the app automatically notifies a trusted contact — offering peace of mind without tracking, social pressure, or unnecessary notifications.",
@@ -35,7 +46,7 @@ const projectsData = [
     ],
     liveLink: "https://www.betweendays.app",
     repoLink: "https://apps.apple.com/hu/app/between-days/id6757996962",
-    tech: ["Swift", "SwiftUI", "UIKit", "Railway", "SendGrid"],
+    tech: ["Swift", "SwiftUI", "UIKit", "Railway", "Resend"],
   },
   {
     title: "Varga Photography",
@@ -138,7 +149,7 @@ const projectsData = [
   },
   {
     title: "HAZE Weather",
-    description: "API integration, Tailwind UI",
+    description: "A modern, responsive weather application built with Next.js and Tailwind CSS. Features city search, geolocation support, 5-day forecasts, temperature unit toggle (°C/°F), and search history. Integrates OpenWeatherMap API with local storage for user preferences.",
     images: [
       `${process.env.PUBLIC_URL}/images/haze_weather/haze_1.png`,
       `${process.env.PUBLIC_URL}/images/haze_weather/haze_2.png`,
