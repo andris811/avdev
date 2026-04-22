@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ThemeToggle from "./components/ThemeToggle";
@@ -11,7 +11,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 
 function App() {
   return (
-    <Router basename="/avdev">
+    <Router>
       <div className="App font-sans text-gray-900 scroll-smooth">
         <Navbar />
         <Routes>
