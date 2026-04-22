@@ -94,4 +94,6 @@ You don't need a straight road to get somewhere meaningful.
 You just need to keep going.
   `,
   tags: ["career", "journey", "self-improvement"],
-};
+}
+
+export default post
