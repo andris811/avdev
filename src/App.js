@@ -6,6 +6,8 @@ import ThemeToggle from "./components/ThemeToggle";
 import HomePage from "./pages/HomePage";
 import AllProjectsPage from "./pages/AllProjectsPage";
 import CVPage from "./pages/CVPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<AllProjectsPage />} />
           <Route path="/cv" element={<CVPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
         </Routes>
         <Footer />
         <ThemeToggle />

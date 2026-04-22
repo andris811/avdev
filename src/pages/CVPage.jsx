@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 const CVPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const downloadPDF = () => window.print();
 
@@ -11,13 +16,6 @@ const CVPage = () => {
         >
           Download PDF
         </button>
-
-        <a
-          href="/avdev/"
-          className="print:hidden fixed top-20 left-4 md:left-8 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 transition-colors text-sm font-medium z-50"
-        >
-          ← Back
-        </a>
 
         <div className="mt-8 md:mt-0">
           <header className="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">

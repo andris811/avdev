@@ -8,6 +8,9 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/" || location.pathname === "/avdev" || location.pathname === "/avdev/";
+  const isCVPage = location.pathname === "/cv" || location.pathname === "/avdev/cv";
+  const isBlogPage = location.pathname === "/blog" || location.pathname === "/avdev/blog" || location.pathname.startsWith("/blog/") || location.pathname.startsWith("/avdev/blog/");
+  const isProjectsPage = location.pathname === "/projects" || location.pathname === "/avdev/projects" || location.pathname.startsWith("/projects/") || location.pathname.startsWith("/avdev/projects/");
 
   //   Scroll detection
   useEffect(() => {
@@ -51,6 +54,7 @@ const Navbar = () => {
   ];
 
   const cvItem = { path: "/cv", label: "CV" };
+  const blogItem = { path: "/blog", label: "Blog" };
 
   const handleNavClick = (itemId) => {
     if (!isHomePage) {
@@ -105,7 +109,7 @@ const Navbar = () => {
                     offset={-80}
                     spyThrottle={100}
                     activeClass="text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400 py-1"
-                    className="inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md"
+                    className={`inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md ${item.id === "projects" && isProjectsPage ? "text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400 py-1" : ""}`}
                     hashSpy={true}
                     isDynamic={true}
                   >
@@ -114,7 +118,7 @@ const Navbar = () => {
                 ) : (
                   <span
                     onClick={() => handleNavClick(item.id)}
-                    className="cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md inline-block"
+                    className={`cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md inline-block ${item.id === "projects" && isProjectsPage ? "text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400 py-1" : ""}`}
                   >
                     {item.label}
                   </span>
@@ -124,9 +128,21 @@ const Navbar = () => {
             <li>
               <RouterLink
                 to={cvItem.path}
-                className="inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md"
+                className={`inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md ${
+                  isCVPage ? "text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400" : ""
+                }`}
               >
                 {cvItem.label}
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink
+                to={blogItem.path}
+                className={`inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md ${
+                  isBlogPage ? "text-purple-600 dark:text-purple-400 border-t-2 border-b-2 border-purple-600 dark:border-purple-400" : ""
+                }`}
+              >
+                {blogItem.label}
               </RouterLink>
             </li>
           </ul>
@@ -187,7 +203,7 @@ const Navbar = () => {
                   offset={-80}
                   spyThrottle={100}
                   activeClass="text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2"
-                  className="block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left"
+                  className={`block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left ${item.id === "projects" && isProjectsPage ? "text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2" : ""}`}
                   onClick={() => setIsOpen(false)}
                   hashSpy={true}
                   isDynamic={true}
@@ -197,7 +213,7 @@ const Navbar = () => {
               ) : (
                 <span
                   onClick={() => handleNavClick(item.id)}
-                  className="block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left"
+                  className={`block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left ${item.id === "projects" && isProjectsPage ? "text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2" : ""}`}
                 >
                   {item.label}
                 </span>
@@ -208,9 +224,22 @@ const Navbar = () => {
             <RouterLink
               to={cvItem.path}
               onClick={() => setIsOpen(false)}
-              className="block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left"
+              className={`block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left ${
+                isCVPage ? "text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2" : ""
+              }`}
             >
               {cvItem.label}
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink
+              to={blogItem.path}
+              onClick={() => setIsOpen(false)}
+              className={`block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left ${
+                isBlogPage ? "text-purple-600 dark:text-purple-400 border-l-2 border-purple-600 dark:border-purple-400 pl-2" : ""
+              }`}
+            >
+              {blogItem.label}
             </RouterLink>
           </li>
         </ul>
