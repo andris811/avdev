@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import ThemeToggle from "./components/ThemeToggle";
 import HomePage from "./pages/HomePage";
 import AllProjectsPage from "./pages/AllProjectsPage";
+import CVPage from "./pages/CVPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<AllProjectsPage />} />
+          <Route path="/cv" element={<CVPage />} />
         </Routes>
         <Footer />
         <ThemeToggle />

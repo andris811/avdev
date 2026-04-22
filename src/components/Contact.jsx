@@ -3,7 +3,8 @@ import { useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot, faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faBriefcase, faFileLines } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Contact = () => {
@@ -94,6 +95,17 @@ const Contact = () => {
                   <span>LinkedIn</span>
                 </a>
               </div>
+            </div>
+
+            <div>
+              <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-4">View My CV</h4>
+              <Link
+                to="/cv"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+              >
+                <FontAwesomeIcon icon={faFileLines} />
+                <span>View CV</span>
+              </Link>
             </div>
 
             {/* Location & Availability */}
