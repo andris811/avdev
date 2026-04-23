@@ -7,7 +7,7 @@ import ScrollToTopButton from "../components/ScrollToTopButton";
 
 const HomePage = () => {
   return (
-    <main className="pt-20">
+    <main className="md:pt-20">
       <Introduction />
       <About />
       <Projects />

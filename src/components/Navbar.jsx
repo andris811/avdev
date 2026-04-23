@@ -89,7 +89,7 @@ const Navbar = () => {
           : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-center items-center relative">
+      <div className="max-w-7xl mx-auto px-4 md:py-4 py-5 flex justify-center items-center relative">
         {/* Mobile name - left side */}
         <div className="md:hidden absolute left-4">
           <span className="text-lg font-semibold text-gray-800 dark:text-gray-100">Andras</span>
