@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { FaExternalLinkAlt, FaGithub, FaAppStore, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const ProjectCard = ({
@@ -12,6 +12,7 @@ const ProjectCard = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAllTech, setShowAllTech] = useState(false);
+  const touchStartX = useRef(null);
 
   // Create object URLs and store them for cleanup
   const processedImages = useMemo(() => {
@@ -41,10 +42,32 @@ const ProjectCard = ({
     }
   };
 
+  // Touch handlers for swipe gestures
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+    touchStartX.current = null;
+  };
+
   const renderImages = () => {
     if (processedImages && processedImages.length > 1) {
       return (
-        <div className="relative h-56 bg-gray-200 dark:bg-gray-700 rounded-xl mb-4 overflow-hidden group">
+        <div className="relative h-56 bg-gray-200 dark:bg-gray-700 rounded-xl mb-4 overflow-hidden group"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
           <img
             src={processedImages[currentIndex].url}
             alt={`${title} screenshot ${currentIndex + 1} of ${processedImages.length}`}
