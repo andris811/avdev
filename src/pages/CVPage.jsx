@@ -23,7 +23,7 @@ const CVPage = () => {
               Andras Varga
             </h1>
             <p className="text-xl text-purple-600 dark:text-purple-400 font-medium mb-4">
-              Digital Product Specialist | iOS & Web Developer
+              Developer
             </p>
 
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
@@ -48,82 +48,38 @@ const CVPage = () => {
               Profile
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Digital product-focused developer with hands-on experience designing and delivering web and iOS applications from concept to deployment. Strong ability to connect user needs, business goals, and technical execution, with a focus on usability, scalability, and continuous product improvement.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-              Experienced in international and cross-functional environments, supporting digital products through localization, UI/UX testing, and collaboration with global teams. Combines fluent English, native Hungarian, and conversational Chinese (HSK 4–5) to operate effectively in multicultural settings.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
-              Currently transitioning toward a Digital Product Manager role, bringing a technical foundation, product mindset, and strong user-centric approach to digital solution development.
+              Tech-savvy IT professional and web & iOS developer with hands-on experience in system support, troubleshooting, and building user-focused digital products. Skilled in web technologies, responsive design, and supporting multimedia-driven workflows. Experienced in IT support, Google Workspace administration, and assisting non-technical teams with digital tools and workflows. Passionate about improving digital systems, supporting creative work with reliable technology, and continuously learning modern development tools.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-3 uppercase tracking-wide">
-              Product & Business Skills
-            </h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700 dark:text-gray-300">
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>User journey mapping & UX thinking</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Feature definition & prioritization</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Agile & iterative development approach</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Cross-functional collaboration</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Localization & internationalization</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Stakeholder communication</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Product lifecycle understanding (concept → release → iteration)</span>
-              </li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-3 uppercase tracking-wide">
-              Technical Skills
+              Skills
             </h2>
 
             <div className="mb-4">
-              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Languages & Frameworks</h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                HTML, CSS (Tailwind), JavaScript, React, Next.js, TypeScript, Ruby on Rails, Python, Swift
-              </p>
+              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Operating Systems & IT Support</h3>
+              <p className="text-gray-700 dark:text-gray-300">Windows, macOS, Linux, troubleshooting, system configuration</p>
             </div>
 
             <div className="mb-4">
-              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Databases</h3>
-              <p className="text-gray-700 dark:text-gray-300">PostgreSQL, MongoDB</p>
+              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Programming Languages</h3>
+              <p className="text-gray-700 dark:text-gray-300">HTML, Tailwind CSS, JavaScript, React, Ruby on Rails, Python, Next.js, TypeScript, PostgreSQL, MongoDB, Swift</p>
             </div>
 
             <div className="mb-4">
-              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Tools</h3>
-              <p className="text-gray-700 dark:text-gray-300">Git, Microsoft 365, Google Workspace</p>
+              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Digital Tools & Platforms</h3>
+              <p className="text-gray-700 dark:text-gray-300">Microsoft 365, Google Workspace, remote collaboration tools</p>
             </div>
 
             <div className="mb-4">
-              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Systems</h3>
-              <p className="text-gray-700 dark:text-gray-300">Windows, macOS, Linux</p>
+              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Networking & Security</h3>
+              <p className="text-gray-700 dark:text-gray-300">Basic networking, VPN setup, cybersecurity awareness</p>
             </div>
 
             <div>
-              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Other</h3>
-              <p className="text-gray-700 dark:text-gray-300">Basic networking, VPN setup, cybersecurity awareness</p>
+              <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Localization & Digital Content</h3>
+              <p className="text-gray-700 dark:text-gray-300">UI/UX localization testing, Trados, multilingual content QA</p>
             </div>
           </section>
 
@@ -142,19 +98,11 @@ const CVPage = () => {
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Designed and developed digital products (web & iOS) from concept to release, defining features, user flows, and core functionality</span>
+                  <span>Developed, designed and maintained responsive websites and mobile applications in App Store, focusing on usability, performance, and clean interfaces</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Translated user needs and requirements into product decisions, improving usability and performance</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Managed full product lifecycle including planning, development, testing, deployment, and iteration</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Continuously enhanced products based on user feedback and usage insights</span>
+                  <span>Handled full development cycles from implementation to deployment and ongoing maintenance, translating requirements into practical digital solutions</span>
                 </li>
               </ul>
             </div>
@@ -164,20 +112,16 @@ const CVPage = () => {
                 <h3 className="font-semibold text-gray-800 dark:text-gray-200">
                   International Kindergarten – Sales & Marketing Officer
                 </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2023</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2023 – 2025</span>
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Managed communication with international clients and partners, supporting enrollment and marketing initiatives</span>
+                  <span>Delivered photography and videography for marketing campaigns and internal events, producing edited content for social media, newsletters, and promotional materials</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Acted as a bridge between Chinese and international stakeholders, ensuring clear communication and smooth operations</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Contributed to improving customer experience and engagement through targeted communication strategies</span>
+                  <span>Provided day-to-day IT support (devices, software, basic troubleshooting) while collaborating with internal teams and external partners to ensure smooth digital workflows and communication</span>
                 </li>
               </ul>
             </div>
@@ -187,24 +131,16 @@ const CVPage = () => {
                 <h3 className="font-semibold text-gray-800 dark:text-gray-200">
                   CSOFT International Ltd – Localization & IT Support
                 </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2021 – 2023</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2020 – 2025</span>
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Conducted UI/UX localization testing to ensure consistency and usability across international markets</span>
+                  <span>Performed localization testing and translation for consumer electronics, ensuring linguistic accuracy and UI consistency</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Collaborated with cross-functional teams (developers, designers, linguists) to improve product quality</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Identified usability and localization issues and contributed to product improvements</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Supported multilingual digital content and software QA processes</span>
+                  <span>Supported UI/UX testing and collaborated with international teams to improve localized software quality</span>
                 </li>
               </ul>
             </div>
@@ -214,20 +150,16 @@ const CVPage = () => {
                 <h3 className="font-semibold text-gray-800 dark:text-gray-200">
                   Kovács Auto Car Parts – Sourcing & Supply Manager
                 </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">2015 – 2021</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">2016 – 2020</span>
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Managed sourcing operations and supplier coordination</span>
+                  <span>Managed sourcing operations and digital documentation</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Maintained digital documentation and supported internal systems</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
-                  <span>Translated technical product information and facilitated international communication</span>
+                  <span>Translated technical product content and supported internal IT systems</span>
                 </li>
               </ul>
             </div>
@@ -245,17 +177,15 @@ const CVPage = () => {
                 </h3>
                 <span className="text-sm text-gray-500 dark:text-gray-400">2022 – 2023</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Training</p>
             </div>
 
             <div className="mb-4">
               <div className="flex justify-between items-start mb-1">
                 <h3 className="font-medium text-gray-800 dark:text-gray-200">
-                  Training 360 Budapest — Junior Java Developer Bootcamp
+                  Training 360 Kft Budapest — Junior Java Developer Bootcamp
                 </h3>
                 <span className="text-sm text-gray-500 dark:text-gray-400">2017</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-300">Training</p>
             </div>
 
             <div>
@@ -280,11 +210,11 @@ const CVPage = () => {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>English — Fluent (professional)</span>
+                <span>English — Fluent, work language</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-purple-600 dark:text-purple-400">•</span>
-                <span>Chinese — Conversational (HSK 4–5, actively improving)</span>
+                <span>Chinese — Conversational (HSK 4-5)</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-purple-600 dark:text-purple-400">•</span>
