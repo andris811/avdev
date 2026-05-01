@@ -92,8 +92,8 @@ const BlogPage = () => {
                     <time className="text-sm text-purple-600 dark:text-purple-400 font-medium">
                       {formatDate(post.date)}
                     </time>
-                    <div className="flex gap-2">
-                      {post.tags.map((tag) => (
+                    <div className="flex flex-wrap gap-2">
+                       {post.tags.map((tag) => (
                         <span
                           key={tag}
                           onClick={(e) => handleTagClick(tag, e)}

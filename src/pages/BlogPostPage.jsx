@@ -112,8 +112,8 @@ const BlogPostPage = () => {
             <time className="text-sm text-purple-600 dark:text-purple-400 font-medium">
               {formatDate(post.date)}
             </time>
-            <div className="flex gap-2">
-              {post.tags.map((tag) => (
+            <div className="flex flex-wrap gap-2">
+               {post.tags.map((tag) => (
                 <span
                   key={tag}
                   className="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
