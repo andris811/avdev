@@ -1,6 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const CVPage = () => {
+  const [showPhone, setShowPhone] = useState(false)
+  const [showWechat, setShowWechat] = useState(false)
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -29,7 +32,16 @@ const CVPage = () => {
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <span>Shanghai, China</span>
               <span>•</span>
-              <span>+86 172 6950 0617</span>
+              {showPhone ? (
+                <span>+86 172 6950 0617</span>
+              ) : (
+                <span
+                  onClick={() => setShowPhone(true)}
+                  className="cursor-pointer hover:text-purple-600 dark:hover:text-purple-400"
+                >
+                  [Click to reveal phone]
+                </span>
+              )}
               <span>•</span>
               <a href="mailto:avdev2024@gmail.com" className="hover:text-purple-600 dark:hover:text-purple-400">
                 avdev2024@gmail.com
@@ -39,7 +51,16 @@ const CVPage = () => {
                 andrasvarga.dev
               </a>
               <span>•</span>
-              <span>WeChat: vargan89</span>
+              {showWechat ? (
+                <span>WeChat: vargan89</span>
+              ) : (
+                <span
+                  onClick={() => setShowWechat(true)}
+                  className="cursor-pointer hover:text-purple-600 dark:hover:text-purple-400"
+                >
+                  WeChat: [Click to reveal]
+                </span>
+              )}
             </div>
           </header>
 
