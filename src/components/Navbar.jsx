@@ -7,10 +7,10 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = location.pathname === "/" || location.pathname === "/avdev" || location.pathname === "/avdev/";
-  const isCVPage = location.pathname === "/cv" || location.pathname === "/avdev/cv";
-  const isBlogPage = location.pathname === "/blog" || location.pathname === "/avdev/blog" || location.pathname.startsWith("/blog/") || location.pathname.startsWith("/avdev/blog/");
-  const isProjectsPage = location.pathname === "/projects" || location.pathname === "/avdev/projects" || location.pathname.startsWith("/projects/") || location.pathname.startsWith("/avdev/projects/");
+  const isHomePage = location.pathname === "/";
+  const isCVPage = location.pathname === "/cv";
+  const isBlogPage = location.pathname === "/blog" || location.pathname.startsWith("/blog/");
+  const isProjectsPage = location.pathname === "/projects" || location.pathname.startsWith("/projects/");
 
   //   Scroll detection
   useEffect(() => {

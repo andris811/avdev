@@ -31,12 +31,12 @@ const CVPage = () => {
               <span>•</span>
               <span>+86 172 6950 0617</span>
               <span>•</span>
-              <a href="mailto:vargan89@gmail.com" className="hover:text-purple-600 dark:hover:text-purple-400">
-                vargan89@gmail.com
+              <a href="mailto:avdev2024@gmail.com" className="hover:text-purple-600 dark:hover:text-purple-400">
+                avdev2024@gmail.com
               </a>
               <span>•</span>
-              <a href="https://andris811.github.io/avdev/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600 dark:hover:text-purple-400">
-                andris811.github.io/avdev/
+              <a href="https://andrasvarga.dev" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600 dark:hover:text-purple-400">
+                andrasvarga.dev
               </a>
               <span>•</span>
               <span>WeChat: vargan89</span>
