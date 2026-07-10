@@ -37,6 +37,18 @@ const projectsData = [
     tech: ["Swift", "SwiftUI", "UIKit"],
   },
   {
+    title: "HUNKA Home",
+    description:
+      "A multilingual landing site for HUNKA Home built with Next.js App Router and React 19. Features server components, static rendering, and three-language support (EN/ZH/HU) via next-intl with middleware-based routing. Includes SEO optimization with structured data, OpenGraph metadata, dynamic sitemap, and a component-driven architecture styled with Tailwind CSS v4.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/hunka/hunka1.png`,
+      `${process.env.PUBLIC_URL}/images/hunka/hunka2.png`,
+    ],
+    liveLink: "https://hunkahome.com",
+    repoLink: "",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "next-intl"],
+  },
+  {
     title: "Between Days",
     description:
       "A minimal iOS app designed for people who live alone. With one daily tap, users can quietly signal that they’re okay. If check-ins stop for several days, the app automatically notifies a trusted contact — offering peace of mind without tracking, social pressure, or unnecessary notifications.",

@@ -53,7 +53,7 @@ const Navbar = () => {
     { id: "contact", label: "Contact" },
   ];
 
-  const cvItem = { path: "/cv", label: "CV" };
+  // const cvItem = { path: "/cv", label: "CV" };
   const blogItem = { path: "/blog", label: "Blog" };
 
   const handleNavClick = (itemId) => {
@@ -125,7 +125,7 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            <li>
+            {/* <li>
               <RouterLink
                 to={cvItem.path}
                 className={`inline-block cursor-pointer transition-all duration-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:scale-110 px-3 py-2 rounded-md ${
@@ -134,7 +134,7 @@ const Navbar = () => {
               >
                 {cvItem.label}
               </RouterLink>
-            </li>
+            </li> */}
             <li>
               <RouterLink
                 to={blogItem.path}
@@ -220,7 +220,7 @@ const Navbar = () => {
               )}
             </li>
           ))}
-          <li>
+          {/* <li>
             <RouterLink
               to={cvItem.path}
               onClick={() => setIsOpen(false)}
@@ -230,7 +230,7 @@ const Navbar = () => {
             >
               {cvItem.label}
             </RouterLink>
-          </li>
+          </li> */}
           <li>
             <RouterLink
               to={blogItem.path}

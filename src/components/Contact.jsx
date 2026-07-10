@@ -97,7 +97,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-4">View My CV</h4>
               <Link
                 to="/cv"
@@ -106,7 +106,7 @@ const Contact = () => {
                 <FontAwesomeIcon icon={faFileLines} />
                 <span>View CV</span>
               </Link>
-            </div>
+            </div> */}
 
             {/* Location & Availability */}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
