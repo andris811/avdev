@@ -26,6 +26,17 @@ const projectsData = [
     tech: ["Swift", "SwiftUI", "UIKit", "iOS Widgets"],
   },
   {
+    title: "Lingua Playlist",
+    description:
+      "A native iOS language-learning app that lets users build playlists of sentences and learn through immersive audio playback. Features include voice recording with AI-powered pronunciation assessment, spaced repetition flashcards, AI sentence suggestions, and background playback.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/linguaPlaylist/linguaPlaylist1.png`,
+    ],
+    liveLink: "",
+    repoLink: "",
+    tech: ["Swift", "SwiftUI", "SwiftData", "AVFoundation", "Speech Framework", "StoreKit 2", "WidgetKit", "Supabase", "Azure Speech Services", "OpenAI API", "MVVM Architecture"],
+  },
+  {
     title: "Skora: Tabletop",
     description:
       "Minimalist iOS scorekeeper for board games. Gesture-based scoring, adaptive rotated layouts for tabletop play, local multiplayer, game history & stats tracking. SwiftUI + MVVM. Designed for quick, intuitive use during games without distractions.",
