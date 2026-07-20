@@ -81,7 +81,7 @@ const projectsData = [
       `${process.env.PUBLIC_URL}/images/vargaPhoto/varga-photo3.png`,
       `${process.env.PUBLIC_URL}/images/vargaPhoto/varga-photo4.png`,
     ],
-    liveLink: "https://andris811.github.io/vargaPhoto",
+    liveLink: "https://vargaphotography.art",
     repoLink: "https://github.com/andris811/vargaPhoto",
     tech: ["HTML", "CSS", "JavaScript", "Formspree", "JSON"],
   },
