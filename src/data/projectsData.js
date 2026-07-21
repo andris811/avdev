@@ -32,8 +32,8 @@ const projectsData = [
     images: [
       `${process.env.PUBLIC_URL}/images/linguaPlaylist/linguaPlaylist1.png`,
     ],
-    liveLink: "",
-    repoLink: "",
+    liveLink: "https://apps.apple.com/hu/app/lingua-playlist/id6777853979",
+    repoLink: "https://apps.apple.com/hu/app/lingua-playlist/id6777853979",
     tech: ["Swift", "SwiftUI", "SwiftData", "AVFoundation", "Speech Framework", "StoreKit 2", "WidgetKit", "Supabase", "Azure Speech Services", "OpenAI API", "MVVM Architecture"],
   },
   {
