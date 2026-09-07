@@ -137,7 +137,7 @@ const ProjectCard = ({
   };
 
   return (
-    <div className="relative z-10 flex flex-col justify-between bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out h-full min-h-[580px] border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:scale-[1.02] overflow-visible"
+    <div className="relative z-10 hover:z-50 focus-within:z-50 flex flex-col justify-between bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out h-full min-h-[580px] border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:scale-[1.02] overflow-visible"
     >
       <div>
         {renderImages()}
