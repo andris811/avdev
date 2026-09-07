@@ -146,7 +146,7 @@ const ProjectCard = ({
           {title}
         </h3>
         {hasAppStoreRelease && (
-          <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-1 rounded-md bg-sky-50 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs font-semibold">
             <FaAppStore className="text-sm" />
             Published on App Store
           </div>
@@ -160,7 +160,7 @@ const ProjectCard = ({
           {tech?.slice(0, 4).map((item) => (
             <span
               key={item}
-              className="text-xs bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-md font-medium border border-purple-200 dark:border-purple-800"
+              className="text-xs bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-sky-200 px-2 py-1 rounded-md font-medium border border-slate-200 dark:border-slate-600"
             >
               {item}
             </span>
@@ -168,7 +168,7 @@ const ProjectCard = ({
           {tech && tech.length > 4 && (
             <div className="relative">
               <span
-                className="text-xs text-purple-600 dark:text-purple-400 px-2 py-1 cursor-pointer hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                className="text-xs text-emerald-600 dark:text-emerald-300 px-2 py-1 cursor-pointer hover:text-emerald-700 dark:hover:text-emerald-200 transition-colors"
                 onMouseEnter={() => setShowAllTech(true)}
                 onMouseLeave={() => setShowAllTech(false)}
               >
@@ -184,7 +184,7 @@ const ProjectCard = ({
                     {tech.slice(4).map((item) => (
                       <span
                         key={item}
-                        className="text-xs bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 px-2 py-1 rounded-md font-medium border border-purple-200 dark:border-purple-800"
+                        className="text-xs bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-sky-200 px-2 py-1 rounded-md font-medium border border-slate-200 dark:border-slate-600"
                       >
                         {item}
                       </span>
@@ -204,7 +204,7 @@ const ProjectCard = ({
             href={liveLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-sky-600 text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold"
           >
             <FaExternalLinkAlt className="text-sm" />
             <span className="text-sm">{liveLabel}</span>

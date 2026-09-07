@@ -15,7 +15,7 @@ const BlogPostPage = () => {
       <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 pt-24 pb-12 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-2xl font-bold mb-4">Post not found</h1>
-          <Link to="/blog" className="text-purple-600 dark:text-purple-400 hover:underline">
+          <Link to="/blog" className="text-emerald-600 dark:text-emerald-300 hover:underline">
             ← Back to Blog
           </Link>
         </div>
@@ -102,14 +102,14 @@ const BlogPostPage = () => {
       <article className="max-w-3xl mx-auto">
         <Link
           to="/blog"
-          className="inline-flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400 hover:underline mb-8"
+          className="inline-flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-300 hover:underline mb-8"
         >
           ← Back to Blog
         </Link>
 
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <time className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+            <time className="text-sm text-emerald-600 dark:text-emerald-300 font-medium">
               {formatDate(post.date)}
             </time>
             <div className="flex flex-wrap gap-2">

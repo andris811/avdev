@@ -51,7 +51,7 @@ const Contact = () => {
       >
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-sky-600 dark:from-emerald-300 dark:to-sky-300 bg-clip-text text-transparent">
             Let's Connect
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
@@ -80,7 +80,7 @@ const Contact = () => {
                   href="https://github.com/andris811"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 dark:hover:border-emerald-300 hover:text-emerald-600 dark:hover:text-emerald-300 transition-all"
                 >
                   <GitHubIcon fontSize="small" />
                   <span>GitHub</span>
@@ -89,7 +89,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/andrasv89/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 dark:hover:border-emerald-300 hover:text-emerald-600 dark:hover:text-emerald-300 transition-all"
                 >
                   <LinkedInIcon fontSize="small" />
                   <span>LinkedIn</span>
@@ -101,7 +101,7 @@ const Contact = () => {
               <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-4">View My CV</h4>
               <Link
                 to="/cv"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-600 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-600 dark:hover:border-emerald-300 hover:text-emerald-600 dark:hover:text-emerald-300 transition-all"
               >
                 <FontAwesomeIcon icon={faFileLines} />
                 <span>View CV</span>
@@ -112,14 +112,14 @@ const Contact = () => {
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <FontAwesomeIcon icon={faLocationDot} className="text-purple-600 dark:text-purple-400" />
+                  <FontAwesomeIcon icon={faLocationDot} className="text-emerald-600 dark:text-emerald-300" />
                   <div>
                     <span className="text-sm text-gray-500 dark:text-gray-400">Location</span>
                     <p className="text-gray-700 dark:text-gray-300">Shanghai, China</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <FontAwesomeIcon icon={faBriefcase} className="text-purple-600 dark:text-purple-400" />
+                  <FontAwesomeIcon icon={faBriefcase} className="text-emerald-600 dark:text-emerald-300" />
                   <div>
                     <span className="text-sm text-gray-500 dark:text-gray-400">Status</span>
                     <p className="text-gray-700 dark:text-gray-300">Open to opportunities</p>
@@ -202,7 +202,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-shadow duration-200"
+              className="w-full bg-gradient-to-r from-emerald-600 to-sky-600 text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-shadow duration-200"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
@@ -213,7 +213,7 @@ const Contact = () => {
 
         {/* Form Glow Effect */}
         <div
-          className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-purple-400/10 to-blue-400/10 blur-xl pointer-events-none"
+          className="absolute -inset-2 z-0 rounded-xl bg-gradient-to-br from-emerald-400/10 to-sky-400/10 blur-xl pointer-events-none"
           aria-hidden="true"
         ></div>
       </motion.div>

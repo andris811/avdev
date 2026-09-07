@@ -39,7 +39,7 @@ const BlogPage = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 pt-24 pb-20 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
         <header className="mb-16 text-center pt-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent pb-2">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-sky-600 dark:from-emerald-300 dark:to-sky-300 bg-clip-text text-transparent pb-2">
             Blog
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -53,8 +53,8 @@ const BlogPage = () => {
               onClick={() => setSearchParams({})}
               className={`text-sm px-3 py-1.5 rounded-full transition-colors ${
                 !selectedTag
-                  ? "bg-purple-600 text-white"
-                  : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400"
+                  ? "bg-emerald-600 text-white"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 dark:hover:text-emerald-300"
               }`}
             >
               All
@@ -65,8 +65,8 @@ const BlogPage = () => {
                 onClick={(e) => handleTagClick(tag, e)}
                 className={`text-sm px-3 py-1.5 rounded-full transition-colors ${
                   selectedTag === tag
-                    ? "bg-purple-600 text-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400"
+                    ? "bg-emerald-600 text-white"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 dark:hover:text-emerald-300"
                 }`}
               >
                 {tag}
@@ -85,11 +85,11 @@ const BlogPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-purple-600 dark:hover:border-purple-400 transition-colors"
+                className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-emerald-600 dark:hover:border-emerald-300 transition-colors"
               >
                 <Link to={`/blog/${post.id}`} className="block">
                   <div className="flex items-center gap-3 mb-3 flex-wrap">
-                    <time className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+                    <time className="text-sm text-emerald-600 dark:text-emerald-300 font-medium">
                       {formatDate(post.date)}
                     </time>
                     <div className="flex flex-wrap gap-2">
@@ -99,8 +99,8 @@ const BlogPage = () => {
                           onClick={(e) => handleTagClick(tag, e)}
                           className={`text-xs px-2 py-0.5 rounded cursor-pointer transition-colors ${
                             selectedTag === tag
-                              ? "bg-purple-600 text-white"
-                              : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400"
+                              ? "bg-emerald-600 text-white"
+                              : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 dark:hover:text-emerald-300"
                           }`}
                         >
                           {tag}
@@ -109,13 +109,13 @@ const BlogPage = () => {
                     </div>
                   </div>
 
-                  <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                  <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors">
                     {post.title}
                   </h2>
 
                   <p className="text-gray-600 dark:text-gray-400">{post.excerpt}</p>
 
-                  <span className="inline-block mt-4 text-sm font-medium text-purple-600 dark:text-purple-400">
+                  <span className="inline-block mt-4 text-sm font-medium text-emerald-600 dark:text-emerald-300">
                     Read more →
                   </span>
                 </Link>

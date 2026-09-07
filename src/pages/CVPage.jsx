@@ -15,7 +15,7 @@ const CVPage = () => {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={downloadPDF}
-          className="print:hidden fixed bottom-4 right-4 md:bottom-auto md:top-20 md:right-8 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg shadow-md hover:shadow-lg transition-shadow text-sm font-medium z-50"
+          className="print:hidden fixed bottom-4 right-4 md:bottom-auto md:top-20 md:right-8 px-4 py-2 bg-gradient-to-r from-emerald-600 to-sky-600 text-white rounded-lg shadow-md hover:shadow-lg transition-shadow text-sm font-medium z-50"
         >
           Download PDF
         </button>
@@ -25,7 +25,7 @@ const CVPage = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
               Andras Varga
             </h1>
-            <p className="text-xl text-purple-600 dark:text-purple-400 font-medium mb-4">
+            <p className="text-xl text-emerald-600 dark:text-emerald-300 font-medium mb-4">
               Developer
             </p>
 
@@ -37,17 +37,17 @@ const CVPage = () => {
               ) : (
                 <span
                   onClick={() => setShowPhone(true)}
-                  className="cursor-pointer hover:text-purple-600 dark:hover:text-purple-400"
+                  className="cursor-pointer hover:text-emerald-600 dark:hover:text-emerald-300"
                 >
                   [Click to reveal phone]
                 </span>
               )}
               <span>•</span>
-              <a href="mailto:avdev2024@gmail.com" className="hover:text-purple-600 dark:hover:text-purple-400">
+              <a href="mailto:avdev2024@gmail.com" className="hover:text-emerald-600 dark:hover:text-emerald-300">
                 avdev2024@gmail.com
               </a>
               <span>•</span>
-              <a href="https://andrasvarga.dev" target="_blank" rel="noopener noreferrer" className="hover:text-purple-600 dark:hover:text-purple-400">
+              <a href="https://andrasvarga.dev" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 dark:hover:text-emerald-300">
                 andrasvarga.dev
               </a>
               <span>•</span>
@@ -56,7 +56,7 @@ const CVPage = () => {
               ) : (
                 <span
                   onClick={() => setShowWechat(true)}
-                  className="cursor-pointer hover:text-purple-600 dark:hover:text-purple-400"
+                  className="cursor-pointer hover:text-emerald-600 dark:hover:text-emerald-300"
                 >
                   WeChat: [Click to reveal]
                 </span>
@@ -65,7 +65,7 @@ const CVPage = () => {
           </header>
 
           <section className="mb-8">
-            <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-3 uppercase tracking-wide">
+            <h2 className="text-lg font-semibold text-emerald-600 dark:text-emerald-300 mb-3 uppercase tracking-wide">
               Profile
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -74,7 +74,7 @@ const CVPage = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-3 uppercase tracking-wide">
+            <h2 className="text-lg font-semibold text-emerald-600 dark:text-emerald-300 mb-3 uppercase tracking-wide">
               Skills
             </h2>
 
@@ -105,7 +105,7 @@ const CVPage = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-4 uppercase tracking-wide">
+            <h2 className="text-lg font-semibold text-emerald-600 dark:text-emerald-300 mb-4 uppercase tracking-wide">
               Work Experience
             </h2>
 
@@ -118,11 +118,11 @@ const CVPage = () => {
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Developed, designed and maintained responsive websites and mobile applications in App Store, focusing on usability, performance, and clean interfaces</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Handled full development cycles from implementation to deployment and ongoing maintenance, translating requirements into practical digital solutions</span>
                 </li>
               </ul>
@@ -137,11 +137,11 @@ const CVPage = () => {
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Delivered photography and videography for marketing campaigns and internal events, producing edited content for social media, newsletters, and promotional materials</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Provided day-to-day IT support (devices, software, basic troubleshooting) while collaborating with internal teams and external partners to ensure smooth digital workflows and communication</span>
                 </li>
               </ul>
@@ -156,11 +156,11 @@ const CVPage = () => {
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Performed localization testing and translation for consumer electronics, ensuring linguistic accuracy and UI consistency</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Supported UI/UX testing and collaborated with international teams to improve localized software quality</span>
                 </li>
               </ul>
@@ -175,11 +175,11 @@ const CVPage = () => {
               </div>
               <ul className="text-gray-700 dark:text-gray-300 space-y-1">
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Managed sourcing operations and digital documentation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 dark:text-purple-400">•</span>
+                  <span className="text-emerald-600 dark:text-emerald-300">•</span>
                   <span>Translated technical product content and supported internal IT systems</span>
                 </li>
               </ul>
@@ -187,7 +187,7 @@ const CVPage = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-4 uppercase tracking-wide">
+            <h2 className="text-lg font-semibold text-emerald-600 dark:text-emerald-300 mb-4 uppercase tracking-wide">
               Education
             </h2>
 
@@ -221,24 +221,24 @@ const CVPage = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-3 uppercase tracking-wide">
+            <h2 className="text-lg font-semibold text-emerald-600 dark:text-emerald-300 mb-3 uppercase tracking-wide">
               Languages
             </h2>
             <ul className="text-gray-700 dark:text-gray-300 space-y-1">
               <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
+                <span className="text-emerald-600 dark:text-emerald-300">•</span>
                 <span>Hungarian — Native</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
+                <span className="text-emerald-600 dark:text-emerald-300">•</span>
                 <span>English — Fluent, work language</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
+                <span className="text-emerald-600 dark:text-emerald-300">•</span>
                 <span>Chinese — Conversational (HSK 4-5)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-purple-600 dark:text-purple-400">•</span>
+                <span className="text-emerald-600 dark:text-emerald-300">•</span>
                 <span>German — Basic conversational</span>
               </li>
             </ul>

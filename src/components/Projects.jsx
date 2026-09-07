@@ -16,7 +16,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-sky-600 dark:from-emerald-300 dark:to-sky-300 bg-clip-text text-transparent">
             Featured Projects
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -37,7 +37,7 @@ const Projects = () => {
         <div className="text-center mt-12">
           <RouterLink
             to="/projects"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-200"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-emerald-600 to-sky-600 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-200"
           >
             View All Projects ({projectsData.length - 3} more)
           </RouterLink>

@@ -4,22 +4,22 @@ import { FaCode, FaMobileAlt, FaPalette, FaServer } from "react-icons/fa";
 const About = () => {
   const services = [
     {
-      icon: <FaCode className="text-4xl mb-4 text-purple-600 dark:text-purple-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: <FaCode className="text-4xl mb-4 text-sky-600 dark:text-sky-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "Full-Stack Development",
       description: "Building scalable web applications with modern frameworks like React, Next.js, Node.js, and database solutions.",
     },
     {
-      icon: <FaMobileAlt className="text-4xl mb-4 text-blue-600 dark:text-blue-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: <FaMobileAlt className="text-4xl mb-4 text-emerald-600 dark:text-emerald-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "Mobile Development",
       description: "Creating native iOS apps with Swift and SwiftUI, focusing on clean UX and seamless performance.",
     },
     {
-      icon: <FaPalette className="text-4xl mb-4 text-pink-600 dark:text-pink-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: <FaPalette className="text-4xl mb-4 text-slate-600 dark:text-slate-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "UI/UX Design",
       description: "Designing beautiful, intuitive interfaces with Figma and bringing them to life with modern CSS frameworks.",
     },
     {
-      icon: <FaServer className="text-4xl mb-4 text-green-600 dark:text-green-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: <FaServer className="text-4xl mb-4 text-teal-600 dark:text-teal-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
       title: "Backend & APIs",
       description: "Developing robust REST APIs and backend systems with Express, NestJS, Django, and Spring Boot.",
     },
@@ -39,11 +39,11 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-sky-600 dark:from-emerald-300 dark:to-sky-300 bg-clip-text text-transparent">
             What I Do
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm a full-stack developer from Hungary, based in Shanghai. I specialize in creating elegant,
+            I'm an iOS and full-stack developer from Hungary, based in Shanghai. I specialize in creating elegant,
             high-performance applications that solve real-world problems.
           </p>
         </div>
@@ -91,7 +91,7 @@ const About = () => {
                 "User-focused design thinking"
               ].map((strength, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-purple-600 dark:text-purple-400 mt-1">✓</span>
+                  <span className="text-emerald-600 dark:text-emerald-300 mt-1">✓</span>
                   <span className="text-gray-700 dark:text-gray-300">{strength}</span>
                 </li>
               ))}

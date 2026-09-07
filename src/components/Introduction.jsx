@@ -1,8 +1,41 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-scroll";
 
 const Introduction = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const profileImage = `${process.env.PUBLIC_URL}/images/profile.png`;
+  const columns = 5;
+  const rows = 6;
+  const heroSignals = [
+    { value: "6", label: "App Store releases" },
+    { value: "16", label: "Portfolio projects" },
+    { value: "SwiftUI", label: "+ React products" },
+  ];
+  const textMotion = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 16 },
+        animate: { opacity: 1, y: 0 },
+      };
+  const tiles = Array.from({ length: columns * rows }, (_, index) => {
+    const column = index % columns;
+    const row = Math.floor(index / columns);
+    const xFromCenter = column - (columns - 1) / 2;
+    const yFromCenter = row - (rows - 1) / 2;
+    const drift = 34 + ((index * 11) % 28);
+
+    return {
+      index,
+      column,
+      row,
+      x: xFromCenter * drift,
+      y: yFromCenter * drift - 18,
+      rotate: ((index % 2 === 0 ? 1 : -1) * (10 + ((index * 7) % 16))),
+      radius: index % 3 === 0 ? "58% 42% 56% 44%" : index % 3 === 1 ? "44% 56% 48% 52%" : "52% 48% 42% 58%",
+    };
+  });
 
   return (
     <section
@@ -18,13 +51,70 @@ const Introduction = () => {
           <div className="relative order-2 md:order-1">
             <div className="relative w-full max-w-sm mx-auto">
               {/* Photo container - larger, pops out of frame */}
-              <div className="relative z-10 scale-110">
-                <img
-                  src={`${process.env.PUBLIC_URL}/images/profile.png`}
+              <motion.div
+                className="relative z-10 scale-110 w-full"
+                style={{ aspectRatio: "352 / 592" }}
+                initial={prefersReducedMotion ? false : { opacity: 0.92 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div
+                  className="absolute inset-0 grid"
+                  style={{
+                    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                    gridTemplateRows: `repeat(${rows}, 1fr)`,
+                  }}
+                  aria-hidden="true"
+                >
+                  {tiles.map((tile) => (
+                    <motion.div
+                      key={tile.index}
+                      className="will-change-transform"
+                      style={{
+                        backgroundImage: `url(${profileImage})`,
+                        backgroundSize: `${columns * 100}% ${rows * 100}%`,
+                        backgroundPosition: `${(tile.column / (columns - 1)) * 100}% ${(tile.row / (rows - 1)) * 100}%`,
+                      }}
+                      initial={
+                        prefersReducedMotion
+                          ? false
+                          : {
+                              opacity: 0,
+                              x: tile.x,
+                              y: tile.y,
+                              rotate: tile.rotate,
+                              scale: 0.82,
+                              borderRadius: tile.radius,
+                            }
+                      }
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        rotate: 0,
+                        scale: 1,
+                        borderRadius: "0%",
+                      }}
+                      transition={{
+                        duration: 0.75,
+                        delay: prefersReducedMotion ? 0 : 0.05 + tile.index * 0.018,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    />
+                  ))}
+                </div>
+                <motion.img
+                  src={profileImage}
                   alt="Andras Varga - iOS and Full-Stack Developer"
-                  className="w-full h-auto object-contain"
+                  className="absolute inset-0 w-full h-full object-contain"
+                  initial={prefersReducedMotion ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.25,
+                    delay: prefersReducedMotion ? 0 : 1.05,
+                  }}
                 />
-              </div>
+              </motion.div>
               {/* White background rectangle - same height as image, behind it */}
               <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-t-3xl shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 -z-10 scale-90 origin-top"></div>
             </div>
@@ -32,23 +122,84 @@ const Introduction = () => {
 
           {/* Right content - Text & CTA */}
           <div className="order-1 md:order-2 text-center md:text-left">
-            <p className="text-sm tracking-widest text-purple-600 dark:text-purple-400 uppercase mb-3 font-semibold">
+            <motion.p
+              {...textMotion}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-sm tracking-widest text-emerald-600 dark:text-emerald-300 uppercase mb-3 font-semibold"
+            >
               iOS & Full-Stack Developer
-            </p>
+            </motion.p>
 
-            <h1 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <motion.h1
+              {...textMotion}
+              transition={{ duration: 0.55, delay: 0.25 }}
+              className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
+            >
               Hello, <br />
               I'm Andras
-            </h1>
+            </motion.h1>
 
-            <p className="text-base md:text-lg xl:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
+            <motion.p
+              {...textMotion}
+              transition={{ duration: 0.55, delay: 0.35 }}
+              className="text-base md:text-lg xl:text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto md:mx-0 leading-relaxed"
+            >
               I'm a creative and curious developer from Hungary 🇭🇺 living in
               Shanghai. I build polished native iOS apps and full-stack web
               products that solve real problems and create delightful user
               experiences.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
+            <motion.div
+              {...textMotion}
+              transition={{ duration: 0.55, delay: 0.45 }}
+              className="flex flex-wrap justify-center md:justify-start gap-3 max-w-xl mx-auto md:mx-0 mb-8"
+            >
+              {heroSignals.map((signal) => (
+                <div
+                  key={signal.label}
+                  className="inline-flex items-baseline gap-2 rounded-full border border-gray-200 bg-white/70 px-4 py-2 shadow-sm dark:border-gray-700 dark:bg-gray-800/60"
+                >
+                  <span className="text-sm font-bold text-gray-900 dark:text-white">
+                    {signal.value}
+                  </span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {signal.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              {...textMotion}
+              transition={{ duration: 0.55, delay: 0.55 }}
+              className="flex flex-wrap gap-4 justify-center md:justify-start mb-6"
+            >
+              <Link
+                to="contact"
+                smooth={true}
+                duration={500}
+                offset={-80}
+                className="inline-block px-8 py-3 text-base font-semibold bg-gradient-to-r from-emerald-600 to-sky-600 text-white rounded-lg hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+              >
+                Let's Connect →
+              </Link>
+              <Link
+                to="projects"
+                smooth={true}
+                duration={500}
+                offset={-80}
+                className="inline-block px-8 py-3 text-base font-semibold rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+              >
+                View Projects
+              </Link>
+            </motion.div>
+
+            <motion.div
+              {...textMotion}
+              transition={{ duration: 0.55, delay: 0.65 }}
+              className="flex flex-wrap gap-4 justify-center md:justify-start"
+            >
               <a
                 href="https://github.com/andris811"
                 target="_blank"
@@ -67,19 +218,7 @@ const Introduction = () => {
                 <FontAwesomeIcon icon={faLinkedin} />
                 LinkedIn
               </a>
-            </div>
-
-            <div>
-              <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                offset={-80}
-                className="inline-block px-8 py-3 text-base font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:shadow-lg transition-shadow duration-200 cursor-pointer"
-              >
-                Let's Connect →
-              </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
