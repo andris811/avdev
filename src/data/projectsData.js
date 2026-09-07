@@ -14,16 +14,16 @@ const projectsData = [
     tech: ["Swift", "SwiftUI", "UIKit", "HealthKit", "CloudKit", "iOS Widgets"],
   },
   {
-    title: "OneThing Daily",
+    title: "When - Then & Next",
     description:
-      "A minimalist iOS app that helps users focus on a single meaningful intention each day. It replaces habit streaks and productivity pressure with calm reminders, evening reflection, and simple journaling — designed to support intentional living, not optimization.",
+      "A native iOS app for tracking when important things happened, when they are due again, and when dates are coming up. It combines repeat routines, expiries, occasions, reminders, iCloud sync, attachments, home and lock screen widgets, and a polished SwiftUI interface built around calm timeline-style planning.",
     images: [
-      `${process.env.PUBLIC_URL}/images/onething/onething1.png`,
-      `${process.env.PUBLIC_URL}/images/onething/onething2.png`,
+      `${process.env.PUBLIC_URL}/images/when/when_1.png`,
+      `${process.env.PUBLIC_URL}/images/when/when_2.png`,
     ],
-    liveLink: "https://onething-daily.vercel.app",
-    repoLink: "https://apps.apple.com/hu/app/onething-daily/id6757373350",
-    tech: ["Swift", "SwiftUI", "UIKit", "iOS Widgets"],
+    liveLink: "https://when-mauve.vercel.app",
+    repoLink: "https://apps.apple.com/us/app/when-then-next/id6804155280",
+    tech: ["Swift", "SwiftUI", "WidgetKit", "StoreKit", "CloudKit", "UserNotifications", "iCloud Sync"],
   },
   {
     title: "Lingua Playlist",
@@ -35,6 +35,18 @@ const projectsData = [
     liveLink: "https://apps.apple.com/hu/app/lingua-playlist/id6777853979",
     repoLink: "https://apps.apple.com/hu/app/lingua-playlist/id6777853979",
     tech: ["Swift", "SwiftUI", "SwiftData", "AVFoundation", "Speech Framework", "StoreKit 2", "WidgetKit", "Supabase", "Azure Speech Services", "OpenAI API", "MVVM Architecture"],
+  },
+  {
+    title: "OneThing Daily",
+    description:
+      "A minimalist iOS app that helps users focus on a single meaningful intention each day. It replaces habit streaks and productivity pressure with calm reminders, evening reflection, and simple journaling — designed to support intentional living, not optimization.",
+    images: [
+      `${process.env.PUBLIC_URL}/images/onething/onething1.png`,
+      `${process.env.PUBLIC_URL}/images/onething/onething2.png`,
+    ],
+    liveLink: "https://onething-daily.vercel.app",
+    repoLink: "https://apps.apple.com/hu/app/onething-daily/id6757373350",
+    tech: ["Swift", "SwiftUI", "UIKit", "iOS Widgets"],
   },
   {
     title: "Skora: Tabletop",
