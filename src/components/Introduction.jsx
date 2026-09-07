@@ -21,7 +21,7 @@ const Introduction = () => {
               <div className="relative z-10 scale-110">
                 <img
                   src={`${process.env.PUBLIC_URL}/images/profile.png`}
-                  alt="Andras Varga - Full-Stack Developer"
+                  alt="Andras Varga - iOS and Full-Stack Developer"
                   className="w-full h-auto object-contain"
                 />
               </div>
@@ -33,7 +33,7 @@ const Introduction = () => {
           {/* Right content - Text & CTA */}
           <div className="order-1 md:order-2 text-center md:text-left">
             <p className="text-sm tracking-widest text-purple-600 dark:text-purple-400 uppercase mb-3 font-semibold">
-              Full-Stack Web Developer
+              iOS & Full-Stack Developer
             </p>
 
             <h1 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
@@ -43,8 +43,9 @@ const Introduction = () => {
 
             <p className="text-base md:text-lg xl:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
               I'm a creative and curious developer from Hungary 🇭🇺 living in
-              Shanghai. I love building functional and elegant applications that
-              solve real problems and create delightful user experiences.
+              Shanghai. I build polished native iOS apps and full-stack web
+              products that solve real problems and create delightful user
+              experiences.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">

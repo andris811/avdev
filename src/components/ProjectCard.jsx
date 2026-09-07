@@ -29,6 +29,11 @@ const ProjectCard = ({
 
   // Check if this is an iOS app
   const isIOSApp = tech?.includes("Swift");
+  const isLiveAppStoreLink = liveLink?.includes("apps.apple.com");
+  const isRepoAppStoreLink = repoLink?.includes("apps.apple.com");
+  const hasAppStoreRelease = isLiveAppStoreLink || isRepoAppStoreLink;
+  const liveLabel = isLiveAppStoreLink ? "App Store" : isIOSApp ? "Website" : "Live";
+  const repoLabel = isRepoAppStoreLink ? "App Store" : "Code";
 
   const nextImage = () => {
     if (processedImages) {
@@ -140,6 +145,12 @@ const ProjectCard = ({
         <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-100">
           {title}
         </h3>
+        {hasAppStoreRelease && (
+          <div className="inline-flex items-center gap-1.5 mb-3 px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-xs font-semibold">
+            <FaAppStore className="text-sm" />
+            Published on App Store
+          </div>
+        )}
         <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
           {description}
         </p>
@@ -196,7 +207,7 @@ const ProjectCard = ({
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-semibold"
           >
             <FaExternalLinkAlt className="text-sm" />
-            <span className="text-sm">{isIOSApp ? "View" : "Live"}</span>
+            <span className="text-sm">{liveLabel}</span>
           </a>
         ) : (
           <span className="flex-1 flex items-center justify-center px-4 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm font-semibold cursor-not-allowed">
@@ -204,7 +215,7 @@ const ProjectCard = ({
           </span>
         )}
 
-        {repoLink && (
+        {repoLink && repoLink !== liveLink && (
           <a
             href={repoLink}
             target="_blank"
@@ -212,6 +223,7 @@ const ProjectCard = ({
             className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 font-semibold"
           >
             {isIOSApp ? <FaAppStore className="text-sm" /> : <FaGithub className="text-sm" />}
+            <span className="text-sm">{repoLabel}</span>
           </a>
         )}
       </div>
