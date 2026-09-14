@@ -13,6 +13,10 @@ const BookCard = () => (
         <p className="mt-2 font-medium text-gray-700 dark:text-gray-200">{book.subtitle}</p>
         <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{book.description}</p>
         <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">PDF + EPUB</p>
+        <p className="mt-4 text-sm text-emerald-800 dark:text-emerald-200">
+          Launch offer: <strong>$10 USD off</strong> with code{' '}
+          <code className="rounded bg-emerald-100 px-2 py-1 font-semibold dark:bg-emerald-900">LAUNCH10</code> at checkout on Payhip.
+        </p>
         <a href={book.payhipUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex rounded-lg bg-emerald-700 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-600 dark:bg-emerald-400 dark:text-gray-950 dark:hover:bg-emerald-300">
           Explore my book →
         </a>
