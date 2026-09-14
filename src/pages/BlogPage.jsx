@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { getAllPosts } from "../data/blog";
+import BookCard from '../components/BookCard'
 
 const BlogPage = () => {
   useEffect(() => {
@@ -46,6 +47,8 @@ const BlogPage = () => {
             Thoughts on software development, product management, and life in tech
           </p>
         </header>
+
+        <BookCard />
 
         <div className="mb-8">
           <div className="flex flex-wrap justify-center gap-2">

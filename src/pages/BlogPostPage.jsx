@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { getPostById } from "../data/blog";
+import BookPurchase from '../components/BookPurchase'
 
 const BlogPostPage = () => {
   const { id } = useParams();
@@ -108,7 +109,7 @@ const BlogPostPage = () => {
         </Link>
 
         <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             <time className="text-sm text-emerald-600 dark:text-emerald-300 font-medium">
               {formatDate(post.date)}
             </time>
@@ -132,6 +133,7 @@ const BlogPostPage = () => {
         <div className="prose prose-lg dark:prose-invert max-w-none">
           {renderContent(post.content)}
         </div>
+        {post.featuredBook && <BookPurchase />}
       </article>
     </div>
   );

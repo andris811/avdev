@@ -1,4 +1,6 @@
 import { Link } from "react-scroll";
+import { Link as RouterLink } from 'react-router-dom'
+import { book } from '../data/book'
 import { FaCode, FaMobileAlt, FaPalette, FaServer } from "react-icons/fa";
 
 const About = () => {
@@ -73,6 +75,13 @@ const About = () => {
               With a background in education and environmental science, I transitioned into tech after
               years of working in international settings and managing teams. I bring a unique perspective
               that blends logic, creativity, and cross-cultural communication.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+              I also wrote{' '}
+              <RouterLink to={book.articlePath} className="text-emerald-700 dark:text-emerald-300 underline underline-offset-4 hover:text-emerald-800 dark:hover:text-emerald-200">
+                {book.title}
+              </RouterLink>, a practical guide to building and shipping your first app with AI,
+              based on what I've learned releasing my own apps.
             </p>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               Outside of coding, I'm passionate about photography, gaming, and exploring the world.
