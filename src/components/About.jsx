@@ -1,35 +1,55 @@
 import { Link } from "react-scroll";
-import { Link as RouterLink } from 'react-router-dom'
-import { book } from '../data/book'
+import { Link as RouterLink } from "react-router-dom";
+import { book } from "../data/book";
 import { FaCode, FaMobileAlt, FaPalette, FaServer } from "react-icons/fa";
 
 const About = () => {
   const services = [
     {
-      icon: <FaCode className="text-4xl mb-4 text-sky-600 dark:text-sky-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: (
+        <FaCode className="text-4xl mb-4 text-sky-600 dark:text-sky-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
+      ),
       title: "Full-Stack Development",
-      description: "Building scalable web applications with modern frameworks like React, Next.js, Node.js, and database solutions.",
+      description:
+        "Building scalable web applications with modern frameworks like React, Next.js, Node.js, and database solutions.",
     },
     {
-      icon: <FaMobileAlt className="text-4xl mb-4 text-emerald-600 dark:text-emerald-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: (
+        <FaMobileAlt className="text-4xl mb-4 text-emerald-600 dark:text-emerald-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
+      ),
       title: "Mobile Development",
-      description: "Creating native iOS apps with Swift and SwiftUI, focusing on clean UX and seamless performance.",
+      description:
+        "Creating native iOS apps with Swift and SwiftUI, focusing on clean UX and seamless performance.",
     },
     {
-      icon: <FaPalette className="text-4xl mb-4 text-slate-600 dark:text-slate-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: (
+        <FaPalette className="text-4xl mb-4 text-slate-600 dark:text-slate-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
+      ),
       title: "UI/UX Design",
-      description: "Designing beautiful, intuitive interfaces with Figma and bringing them to life with modern CSS frameworks.",
+      description:
+        "Designing beautiful, intuitive interfaces with Figma and bringing them to life with modern CSS frameworks.",
     },
     {
-      icon: <FaServer className="text-4xl mb-4 text-teal-600 dark:text-teal-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />,
+      icon: (
+        <FaServer className="text-4xl mb-4 text-teal-600 dark:text-teal-300 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
+      ),
       title: "Backend & APIs",
-      description: "Developing robust REST APIs and backend systems with Express, NestJS, Django, and Spring Boot.",
+      description:
+        "Developing robust REST APIs and backend systems with Express, NestJS, Django, and Spring Boot.",
     },
   ];
 
   const techStack = [
-    "React", "Next.js", "TypeScript", "Node.js", "Swift",
-    "Python", "Java", "PostgreSQL", "MongoDB", "Tailwind CSS"
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Swift",
+    "Python",
+    "Java",
+    "PostgreSQL",
+    "MongoDB",
+    "Tailwind CSS",
   ];
 
   return (
@@ -39,14 +59,14 @@ const About = () => {
     >
       <div className="max-w-7xl w-full">
         {/* Section Header */}
-        <div className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-600 to-sky-600 dark:from-emerald-300 dark:to-sky-300 bg-clip-text text-transparent">
             What I Do
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm an iOS and full-stack developer from Hungary, based in Shanghai. I specialize in creating elegant,
-            high-performance applications that solve real-world problems.
+            I'm an iOS and full-stack developer from Hungary, based in Shanghai.
+            I specialize in creating elegant, high-performance applications that
+            solve real-world problems.
           </p>
         </div>
 
@@ -67,25 +87,33 @@ const About = () => {
         </div>
 
         {/* Background & Strengths */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16"
-        >
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
             <h3 className="text-2xl font-bold mb-4">My Background</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-              With a background in education and environmental science, I transitioned into tech after
-              years of working in international settings and managing teams. I bring a unique perspective
-              that blends logic, creativity, and cross-cultural communication.
+              With a background in education and environmental science, I
+              transitioned into tech after years of working in international
+              environments. Originally from Hungary and now based in Shanghai,
+              China, living and working across cultures has shaped how I
+              approach both technology and communication. I enjoy combining
+              logic and creativity to build practical, thoughtful digital
+              products.
             </p>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-              I also wrote{' '}
-              <RouterLink to={book.articlePath} className="text-emerald-700 dark:text-emerald-300 underline underline-offset-4 hover:text-emerald-800 dark:hover:text-emerald-200">
+              I also wrote{" "}
+              <RouterLink
+                to={book.articlePath}
+                className="text-emerald-700 dark:text-emerald-300 underline underline-offset-4 hover:text-emerald-800 dark:hover:text-emerald-200"
+              >
                 {book.title}
-              </RouterLink>, a practical guide to building and shipping your first app with AI,
-              based on what I've learned releasing my own apps.
+              </RouterLink>
+              , a practical guide to building and shipping your first app with
+              AI, based on what I've learned releasing my own apps.
             </p>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Outside of coding, I'm passionate about photography, gaming, and exploring the world.
-              I'm always eager to learn new technologies and take on challenging projects.
+              Outside of coding, I'm passionate about photography, gaming, and
+              exploring the world. I'm always eager to learn new technologies
+              and take on challenging projects.
             </p>
           </div>
 
@@ -97,11 +125,15 @@ const About = () => {
                 "Fast learner and detail-oriented",
                 "Creative problem solving",
                 "Strong foundation in both frontend & backend",
-                "User-focused design thinking"
+                "User-focused design thinking",
               ].map((strength, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-emerald-600 dark:text-emerald-300 mt-1">✓</span>
-                  <span className="text-gray-700 dark:text-gray-300">{strength}</span>
+                  <span className="text-emerald-600 dark:text-emerald-300 mt-1">
+                    ✓
+                  </span>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {strength}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -109,9 +141,10 @@ const About = () => {
         </div>
 
         {/* De-emphasized Tech Stack */}
-        <div className="text-center"
-        >
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Technologies I work with</p>
+        <div className="text-center">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+            Technologies I work with
+          </p>
           <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
             {techStack.map((tech) => (
               <span
