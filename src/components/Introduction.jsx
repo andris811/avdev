@@ -145,7 +145,7 @@ const Introduction = () => {
               className="text-base md:text-lg xl:text-xl text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto md:mx-0 leading-relaxed"
             >
               I'm a creative and curious developer from Hungary 🇭🇺 living in
-              Shanghai. I build polished native iOS apps and full-stack web
+              Shanghai 🇨🇳. I build polished native iOS apps and full-stack web
               products that solve real problems and create delightful user
               experiences.
             </motion.p>
