@@ -5,4 +5,5 @@ export const book = {
   articlePath: '/blog/idea-to-app-store',
   cover: `${process.env.PUBLIC_URL}/images/book/idea-to-app-store.jpg`,
   payhipUrl: 'https://payhip.com/b/6gKJm',
+  amazonUrl: "https://www.amazon.com/dp/B0HJYNYSPY",
 }
