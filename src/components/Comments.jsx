@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import CommentToolbar from "./CommentToolbar";
+// import CommentToolbar from "./CommentToolbar";
 import CommentEditor from "./CommentEditor";
 import DOMPurify from "dompurify";
 
@@ -58,6 +58,7 @@ const Comments = ({ postId }) => {
   };
 
   const commentTextLength = getPlainText(comment).length;
+  const replyTextLength = getPlainText(replyText).length;
 
   const buildCommentTree = (comments) => {
     const commentMap = {};
@@ -88,6 +89,7 @@ const Comments = ({ postId }) => {
 
     const trimmedName = replyName.trim();
     const trimmedReply = replyText.trim();
+    const plainReply = getPlainText(trimmedReply).trim();
 
     if (website) return;
 
@@ -96,7 +98,7 @@ const Comments = ({ postId }) => {
       return;
     }
 
-    if (trimmedReply.length < 3 || trimmedReply.length > 1500) {
+    if (plainReply.length < 3 || plainReply.length > 1500) {
       setReplyMessage("Reply must be between 3 and 1500 characters.");
       return;
     }
@@ -289,28 +291,19 @@ const Comments = ({ postId }) => {
                 className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
               />
 
-              <CommentToolbar
+              <CommentEditor
                 value={replyText}
-                setValue={setReplyText}
-                textareaId={`reply-content-${comment.id}`}
-              />
-
-              <textarea
-                id={`reply-content-${comment.id}`}
-                value={replyText}
-                onChange={(e) => setReplyText(e.target.value)}
-                minLength={3}
-                maxLength={1500}
-                required
-                rows={3}
-                autoFocus
+                onChange={setReplyText}
                 placeholder={`Reply to ${comment.name}...`}
-                className="w-full resize-y rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
               />
 
               <div className="mt-1 flex items-center justify-between gap-4">
-                <span className="text-xs text-gray-400">
-                  {replyText.length}/1500
+                <span
+                  className={`text-xs ${
+                    replyTextLength > 1500 ? "text-red-500" : "text-gray-400"
+                  }`}
+                >
+                  {replyTextLength}/1500
                 </span>
 
                 <button
