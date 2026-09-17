@@ -1,22 +1,73 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getAllPosts } from "../data/blog";
-import BookCard from '../components/BookCard'
+import BookCard from "../components/BookCard";
+import { supabase } from "../lib/supabase";
 
 const BlogPage = () => {
+  const [likeCounts, setLikeCounts] = useState({});
+  const [commentCounts, setCommentCounts] = useState({});
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    const loadLikeCounts = async () => {
+      const { data, error } = await supabase
+        .from("blog_post_likes")
+        .select("post_id, likes");
+
+      if (error) {
+        console.error("Failed to load blog likes:", error);
+        return;
+      }
+
+      const counts = {};
+
+      data.forEach((row) => {
+        counts[row.post_id] = row.likes;
+      });
+
+      setLikeCounts(counts);
+    };
+
+    loadLikeCounts();
+  }, []);
+
+  useEffect(() => {
+    const loadCommentCounts = async () => {
+      const { data, error } = await supabase
+        .from("blog_comments")
+        .select("post_id")
+        .eq("approved", true);
+
+      if (error) {
+        console.error("Failed to load comment counts:", error);
+        return;
+      }
+
+      const counts = {};
+
+      data.forEach((comment) => {
+        counts[comment.post_id] = (counts[comment.post_id] ?? 0) + 1;
+      });
+
+      setCommentCounts(counts);
+    };
+
+    loadCommentCounts();
+  }, []);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedTag = searchParams.get("tag");
-  
+
   const allPosts = getAllPosts();
-  const posts = selectedTag 
-    ? allPosts.filter(post => post.tags.includes(selectedTag))
+  const posts = selectedTag
+    ? allPosts.filter((post) => post.tags.includes(selectedTag))
     : allPosts;
 
-  const allTags = [...new Set(allPosts.flatMap(post => post.tags))].sort();
+  const allTags = [...new Set(allPosts.flatMap((post) => post.tags))].sort();
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -44,7 +95,8 @@ const BlogPage = () => {
             Blog
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Thoughts on software development, product management, and life in tech
+            Thoughts on software development, product management, and life in
+            tech
           </p>
         </header>
 
@@ -79,7 +131,9 @@ const BlogPage = () => {
         </div>
 
         {posts.length === 0 ? (
-          <p className="text-center text-gray-500">No posts found for tag: {selectedTag}</p>
+          <p className="text-center text-gray-500">
+            No posts found for tag: {selectedTag}
+          </p>
         ) : (
           <div className="space-y-8">
             {posts.map((post, index) => (
@@ -96,7 +150,7 @@ const BlogPage = () => {
                       {formatDate(post.date)}
                     </time>
                     <div className="flex flex-wrap gap-2">
-                       {post.tags.map((tag) => (
+                      {post.tags.map((tag) => (
                         <span
                           key={tag}
                           onClick={(e) => handleTagClick(tag, e)}
@@ -116,9 +170,24 @@ const BlogPage = () => {
                     {post.title}
                   </h2>
 
-                  <p className="text-gray-600 dark:text-gray-400">{post.excerpt}</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {post.excerpt}
+                  </p>
 
-                  <span className="inline-block mt-4 text-sm font-medium text-emerald-600 dark:text-emerald-300">
+                  <div className="mt-4 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span>♡ {likeCounts[post.id] ?? 0}</span>
+
+                    <span>·</span>
+
+                    <span>
+                      {commentCounts[post.id] ?? 0}{" "}
+                      {(commentCounts[post.id] ?? 0) === 1
+                        ? "comment"
+                        : "comments"}
+                    </span>
+                  </div>
+
+                  <span className="inline-block mt-3 text-sm font-medium text-emerald-600 dark:text-emerald-300">
                     Read more →
                   </span>
                 </Link>

@@ -1,7 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { getPostById } from "../data/blog";
-import BookPurchase from '../components/BookPurchase'
+import BookPurchase from "../components/BookPurchase";
+import BlogShare from "../components/BlogShare";
+import LikeButton from "../components/LikeButton";
+import Comments from "../components/Comments";
 
 const BlogPostPage = () => {
   const { id } = useParams();
@@ -16,7 +19,10 @@ const BlogPostPage = () => {
       <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 pt-24 pb-12 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-2xl font-bold mb-4">Post not found</h1>
-          <Link to="/blog" className="text-emerald-600 dark:text-emerald-300 hover:underline">
+          <Link
+            to="/blog"
+            className="text-emerald-600 dark:text-emerald-300 hover:underline"
+          >
             ← Back to Blog
           </Link>
         </div>
@@ -42,7 +48,14 @@ const BlogPostPage = () => {
       const parts = text.split(/(\*\*[^*]+\*\*)/);
       return parts.map((part, i) => {
         if (part.startsWith("**") && part.endsWith("**")) {
-          return <strong key={i} className="font-semibold text-gray-900 dark:text-white">{part.slice(2, -2)}</strong>;
+          return (
+            <strong
+              key={i}
+              className="font-semibold text-gray-900 dark:text-white"
+            >
+              {part.slice(2, -2)}
+            </strong>
+          );
         }
         return part;
       });
@@ -53,46 +66,113 @@ const BlogPostPage = () => {
 
       if (trimmed.startsWith("## ")) {
         if (inList) {
-          elements.push(<ul key={`list-${index}`} className="list-disc list-inside space-y-1 mb-4">{listItems}</ul>);
+          elements.push(
+            <ul
+              key={`list-${index}`}
+              className="list-disc list-inside space-y-1 mb-4"
+            >
+              {listItems}
+            </ul>,
+          );
           listItems = [];
           inList = false;
         }
-        elements.push(<h2 key={index} className="text-xl font-semibold mt-8 mb-4 text-gray-900 dark:text-white">{trimmed.slice(3)}</h2>);
-      } else if (trimmed.startsWith("1. ") || trimmed.startsWith("2. ") || trimmed.startsWith("3. ")) {
+        elements.push(
+          <h2
+            key={index}
+            className="text-xl font-semibold mt-8 mb-4 text-gray-900 dark:text-white"
+          >
+            {trimmed.slice(3)}
+          </h2>,
+        );
+      } else if (
+        trimmed.startsWith("1. ") ||
+        trimmed.startsWith("2. ") ||
+        trimmed.startsWith("3. ")
+      ) {
         if (!inList) {
           inList = true;
         }
-        listItems.push(<li key={index} className="text-gray-700 dark:text-gray-300">{processBold(trimmed.slice(3))}</li>);
+        listItems.push(
+          <li key={index} className="text-gray-700 dark:text-gray-300">
+            {processBold(trimmed.slice(3))}
+          </li>,
+        );
       } else if (trimmed.startsWith("- ")) {
         if (inList) {
-          elements.push(<ul key={`list-${index}`} className="list-disc list-inside space-y-1 mb-4">{listItems}</ul>);
+          elements.push(
+            <ul
+              key={`list-${index}`}
+              className="list-disc list-inside space-y-1 mb-4"
+            >
+              {listItems}
+            </ul>,
+          );
           listItems = [];
           inList = false;
         }
-        if (elements.length > 0 && elements[elements.length - 1]?.type === "ul") {
+        if (
+          elements.length > 0 &&
+          elements[elements.length - 1]?.type === "ul"
+        ) {
           const lastUl = elements.pop();
-          elements.push(<ul key={index} className="list-disc list-inside space-y-1 mb-4">{lastUl.props.children}<li className="text-gray-700 dark:text-gray-300">{processBold(trimmed.slice(2))}</li></ul>);
+          elements.push(
+            <ul key={index} className="list-disc list-inside space-y-1 mb-4">
+              {lastUl.props.children}
+              <li className="text-gray-700 dark:text-gray-300">
+                {processBold(trimmed.slice(2))}
+              </li>
+            </ul>,
+          );
         } else {
-          elements.push(<ul key={index} className="list-disc list-inside space-y-1 mb-4"><li className="text-gray-700 dark:text-gray-300">{processBold(trimmed.slice(2))}</li></ul>);
+          elements.push(
+            <ul key={index} className="list-disc list-inside space-y-1 mb-4">
+              <li className="text-gray-700 dark:text-gray-300">
+                {processBold(trimmed.slice(2))}
+              </li>
+            </ul>,
+          );
         }
       } else if (trimmed === "") {
         if (inList) {
-          elements.push(<ul key={`list-${index}`} className="list-disc list-inside space-y-1 mb-4">{listItems}</ul>);
+          elements.push(
+            <ul
+              key={`list-${index}`}
+              className="list-disc list-inside space-y-1 mb-4"
+            >
+              {listItems}
+            </ul>,
+          );
           listItems = [];
           inList = false;
         }
       } else {
         if (inList) {
-          elements.push(<ul key={`list-${index}`} className="list-disc list-inside space-y-1 mb-4">{listItems}</ul>);
+          elements.push(
+            <ul
+              key={`list-${index}`}
+              className="list-disc list-inside space-y-1 mb-4"
+            >
+              {listItems}
+            </ul>,
+          );
           listItems = [];
           inList = false;
         }
-        elements.push(<p key={index} className="text-gray-700 dark:text-gray-300 mb-4">{processBold(trimmed)}</p>);
+        elements.push(
+          <p key={index} className="text-gray-700 dark:text-gray-300 mb-4">
+            {processBold(trimmed)}
+          </p>,
+        );
       }
     });
 
     if (inList) {
-      elements.push(<ul key="final-list" className="list-disc list-inside space-y-1 mb-4">{listItems}</ul>);
+      elements.push(
+        <ul key="final-list" className="list-disc list-inside space-y-1 mb-4">
+          {listItems}
+        </ul>,
+      );
     }
 
     return elements;
@@ -114,7 +194,7 @@ const BlogPostPage = () => {
               {formatDate(post.date)}
             </time>
             <div className="flex flex-wrap gap-2">
-               {post.tags.map((tag) => (
+              {post.tags.map((tag) => (
                 <span
                   key={tag}
                   className="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded"
@@ -133,7 +213,16 @@ const BlogPostPage = () => {
         <div className="prose prose-lg dark:prose-invert max-w-none">
           {renderContent(post.content)}
         </div>
+
+        <BlogShare title={post.title} />
+
+        <div className="mt-6">
+          <LikeButton postId={post.id} />
+        </div>
+
         {post.featuredBook && <BookPurchase />}
+
+        <Comments postId={post.id} />
       </article>
     </div>
   );
