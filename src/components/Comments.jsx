@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import CommentToolbar from "./CommentToolbar";
 
 const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -153,9 +156,59 @@ const Comments = ({ postId }) => {
             </time>
           </div>
 
-          <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-            {comment.content}
-          </p>
+          <div className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => (
+                  <p className="mb-2 last:mb-0">{children}</p>
+                ),
+
+                strong: ({ children }) => (
+                  <strong className="font-semibold text-gray-900 dark:text-white">
+                    {children}
+                  </strong>
+                ),
+
+                em: ({ children }) => <em>{children}</em>,
+
+                blockquote: ({ children }) => (
+                  <blockquote className="my-2 border-l-2 border-gray-300 pl-3 text-gray-500 dark:border-gray-600 dark:text-gray-400">
+                    {children}
+                  </blockquote>
+                ),
+
+                ul: ({ children }) => (
+                  <ul className="my-2 list-disc space-y-1 pl-5">{children}</ul>
+                ),
+
+                ol: ({ children }) => (
+                  <ol className="my-2 list-decimal space-y-1 pl-5">
+                    {children}
+                  </ol>
+                ),
+
+                a: ({ href, children }) => (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-600 underline underline-offset-2 hover:text-emerald-700 dark:text-emerald-300"
+                  >
+                    {children}
+                  </a>
+                ),
+
+                code: ({ children }) => (
+                  <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+                    {children}
+                  </code>
+                ),
+              }}
+            >
+              {comment.content}
+            </ReactMarkdown>
+          </div>
 
           <button
             type="button"
@@ -190,7 +243,14 @@ const Comments = ({ postId }) => {
                 className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
               />
 
+              <CommentToolbar
+                value={replyText}
+                setValue={setReplyText}
+                textareaId={`reply-content-${comment.id}`}
+              />
+
               <textarea
+                id={`reply-content-${comment.id}`}
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
                 minLength={3}
@@ -346,6 +406,12 @@ const Comments = ({ postId }) => {
           >
             Comment
           </label>
+
+          <CommentToolbar
+            value={comment}
+            setValue={setComment}
+            textareaId={`comment-content-${postId}`}
+          />
 
           <textarea
             id={`comment-content-${postId}`}
