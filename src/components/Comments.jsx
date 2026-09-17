@@ -9,6 +9,11 @@ const Comments = ({ postId }) => {
   const [website, setWebsite] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const [replyingTo, setReplyingTo] = useState(null);
+  const [replyText, setReplyText] = useState("");
+  const [replySubmitting, setReplySubmitting] = useState(false);
+  const [replyMessage, setReplyMessage] = useState("");
+  const [replyName, setReplyName] = useState("");
 
   useEffect(() => {
     const loadComments = async () => {
@@ -16,7 +21,7 @@ const Comments = ({ postId }) => {
 
       const { data, error } = await supabase
         .from("blog_comments")
-        .select("id, name, content, created_at")
+        .select("id, name, content, created_at, parent_id")
         .eq("post_id", postId)
         .eq("approved", true)
         .order("created_at", { ascending: true });
@@ -39,6 +44,194 @@ const Comments = ({ postId }) => {
       month: "short",
       day: "numeric",
     });
+  };
+
+  const buildCommentTree = (comments) => {
+    const commentMap = {};
+    const rootComments = [];
+
+    comments.forEach((comment) => {
+      commentMap[comment.id] = {
+        ...comment,
+        replies: [],
+      };
+    });
+
+    comments.forEach((comment) => {
+      if (comment.parent_id && commentMap[comment.parent_id]) {
+        commentMap[comment.parent_id].replies.push(commentMap[comment.id]);
+      } else {
+        rootComments.push(commentMap[comment.id]);
+      }
+    });
+
+    return rootComments;
+  };
+
+  const commentTree = buildCommentTree(comments);
+
+  const handleReplySubmit = async (e, parentId) => {
+    e.preventDefault();
+
+    const trimmedName = replyName.trim();
+    const trimmedReply = replyText.trim();
+
+    if (website) return;
+
+    if (trimmedName.length < 2 || trimmedName.length > 50) {
+      setReplyMessage("Name must be between 2 and 50 characters.");
+      return;
+    }
+
+    if (trimmedReply.length < 3 || trimmedReply.length > 1500) {
+      setReplyMessage("Reply must be between 3 and 1500 characters.");
+      return;
+    }
+
+    const cooldownKey = `blog-comment-time-${postId}`;
+    const lastCommentTime = Number(localStorage.getItem(cooldownKey) || 0);
+    const now = Date.now();
+
+    if (now - lastCommentTime < 30000) {
+      setReplyMessage("Please wait a moment before posting another comment.");
+      return;
+    }
+
+    setReplySubmitting(true);
+    setReplyMessage("");
+
+    const { data, error } = await supabase
+      .from("blog_comments")
+      .insert({
+        post_id: postId,
+        parent_id: parentId,
+        name: trimmedName,
+        content: trimmedReply,
+        approved: true,
+      })
+      .select("id, name, content, created_at, parent_id")
+      .single();
+
+    if (error) {
+      console.error("Failed to post reply:", error);
+      setReplyMessage("Something went wrong. Please try again.");
+      setReplySubmitting(false);
+      return;
+    }
+
+    setComments((currentComments) => [...currentComments, data]);
+
+    localStorage.setItem(cooldownKey, String(now));
+
+    setReplyText("");
+    setReplyingTo(null);
+    setReplyMessage("");
+    setReplySubmitting(false);
+  };
+
+  const renderComment = (comment, depth = 0) => {
+    return (
+      <div
+        key={comment.id}
+        className={
+          depth > 0
+            ? "ml-4 border-l-2 border-gray-200 pl-4 dark:border-gray-700 sm:ml-6 sm:pl-5"
+            : ""
+        }
+      >
+        <div className="pb-5">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <p className="font-semibold text-gray-900 dark:text-white">
+              {comment.name}
+            </p>
+
+            <time
+              dateTime={comment.created_at}
+              className="text-xs text-gray-500 dark:text-gray-400"
+            >
+              {formatDate(comment.created_at)}
+            </time>
+          </div>
+
+          <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+            {comment.content}
+          </p>
+
+          <button
+            type="button"
+            onClick={() => {
+              const isClosing = replyingTo === comment.id;
+
+              setReplyingTo(isClosing ? null : comment.id);
+              setReplyText("");
+              setReplyMessage("");
+
+              if (!isClosing && name.trim()) {
+                setReplyName(name.trim());
+              }
+            }}
+            className="mt-2 text-xs font-medium text-gray-500 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
+          >
+            {replyingTo === comment.id ? "Cancel" : "Reply"}
+          </button>
+
+          {replyingTo === comment.id && (
+            <form
+              onSubmit={(e) => handleReplySubmit(e, comment.id)}
+              className="mt-3"
+            >
+              <input
+                type="text"
+                value={replyName}
+                onChange={(e) => setReplyName(e.target.value)}
+                maxLength={50}
+                required
+                placeholder="Your name"
+                className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+              />
+
+              <textarea
+                value={replyText}
+                onChange={(e) => setReplyText(e.target.value)}
+                minLength={3}
+                maxLength={1500}
+                required
+                rows={3}
+                autoFocus
+                placeholder={`Reply to ${comment.name}...`}
+                className="w-full resize-y rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+              />
+
+              <div className="mt-1 flex items-center justify-between gap-4">
+                <span className="text-xs text-gray-400">
+                  {replyText.length}/1500
+                </span>
+
+                <button
+                  type="submit"
+                  disabled={replySubmitting}
+                  className="rounded-lg bg-emerald-700 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-400 dark:text-gray-950 dark:hover:bg-emerald-300"
+                >
+                  {replySubmitting ? "Posting..." : "Post reply"}
+                </button>
+              </div>
+
+              {replyMessage && (
+                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  {replyMessage}
+                </p>
+              )}
+            </form>
+          )}
+        </div>
+
+        {comment.replies?.length > 0 && (
+          <div>
+            {comment.replies.map((reply) => renderComment(reply, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -81,7 +274,7 @@ const Comments = ({ postId }) => {
         content: trimmedComment,
         approved: true,
       })
-      .select("id, name, content, created_at")
+      .select("id, name, content, created_at, parent_id")
       .single();
 
     if (error) {
@@ -198,27 +391,12 @@ const Comments = ({ postId }) => {
         </p>
       ) : (
         <div className="mt-6 space-y-6">
-          {comments.map((comment) => (
+          {commentTree.map((comment) => (
             <div
               key={comment.id}
-              className="border-b border-gray-100 pb-6 last:border-b-0 dark:border-gray-800"
+              className="border-b border-gray-100 pb-1 last:border-b-0 dark:border-gray-800"
             >
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <p className="font-semibold text-gray-900 dark:text-white">
-                  {comment.name}
-                </p>
-
-                <time
-                  dateTime={comment.created_at}
-                  className="text-xs text-gray-500 dark:text-gray-400"
-                >
-                  {formatDate(comment.created_at)}
-                </time>
-              </div>
-
-              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-                {comment.content}
-              </p>
+              {renderComment(comment)}
             </div>
           ))}
         </div>
