@@ -3,6 +3,8 @@ import { supabase } from "../lib/supabase";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CommentToolbar from "./CommentToolbar";
+import CommentEditor from "./CommentEditor";
+import DOMPurify from "dompurify";
 
 const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -48,6 +50,14 @@ const Comments = ({ postId }) => {
       day: "numeric",
     });
   };
+
+  const getPlainText = (html) => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  };
+
+  const commentTextLength = getPlainText(comment).length;
 
   const buildCommentTree = (comments) => {
     const commentMap = {};
@@ -132,6 +142,92 @@ const Comments = ({ postId }) => {
     setReplySubmitting(false);
   };
 
+  const renderCommentContent = (content) => {
+    if (!content) return null;
+
+    const trimmedContent = content.trim();
+
+    // TipTap-generated comments contain HTML elements.
+    // Older comments are Markdown, so we continue rendering those
+    // through ReactMarkdown.
+    const isHtml = /<\/?[a-z][\s\S]*>/i.test(trimmedContent);
+
+    if (isHtml) {
+      const sanitizedHtml = DOMPurify.sanitize(trimmedContent, {
+        ALLOWED_TAGS: [
+          "p",
+          "strong",
+          "em",
+          "a",
+          "blockquote",
+          "ul",
+          "ol",
+          "li",
+          "code",
+          "br",
+        ],
+        ALLOWED_ATTR: ["href", "target", "rel"],
+      });
+
+      return (
+        <div
+          className="published-comment"
+          dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+        />
+      );
+    }
+
+    return (
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+
+          strong: ({ children }) => (
+            <strong className="font-semibold text-gray-900 dark:text-white">
+              {children}
+            </strong>
+          ),
+
+          em: ({ children }) => <em>{children}</em>,
+
+          blockquote: ({ children }) => (
+            <blockquote className="my-2 border-l-2 border-gray-300 pl-3 text-gray-500 dark:border-gray-600 dark:text-gray-400">
+              {children}
+            </blockquote>
+          ),
+
+          ul: ({ children }) => (
+            <ul className="my-2 list-disc space-y-1 pl-5">{children}</ul>
+          ),
+
+          ol: ({ children }) => (
+            <ol className="my-2 list-decimal space-y-1 pl-5">{children}</ol>
+          ),
+
+          a: ({ href, children }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-600 underline underline-offset-2 hover:text-emerald-700 dark:text-emerald-300"
+            >
+              {children}
+            </a>
+          ),
+
+          code: ({ children }) => (
+            <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+              {children}
+            </code>
+          ),
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    );
+  };
+
   const renderComment = (comment, depth = 0) => {
     return (
       <div
@@ -157,57 +253,7 @@ const Comments = ({ postId }) => {
           </div>
 
           <div className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                p: ({ children }) => (
-                  <p className="mb-2 last:mb-0">{children}</p>
-                ),
-
-                strong: ({ children }) => (
-                  <strong className="font-semibold text-gray-900 dark:text-white">
-                    {children}
-                  </strong>
-                ),
-
-                em: ({ children }) => <em>{children}</em>,
-
-                blockquote: ({ children }) => (
-                  <blockquote className="my-2 border-l-2 border-gray-300 pl-3 text-gray-500 dark:border-gray-600 dark:text-gray-400">
-                    {children}
-                  </blockquote>
-                ),
-
-                ul: ({ children }) => (
-                  <ul className="my-2 list-disc space-y-1 pl-5">{children}</ul>
-                ),
-
-                ol: ({ children }) => (
-                  <ol className="my-2 list-decimal space-y-1 pl-5">
-                    {children}
-                  </ol>
-                ),
-
-                a: ({ href, children }) => (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-600 underline underline-offset-2 hover:text-emerald-700 dark:text-emerald-300"
-                  >
-                    {children}
-                  </a>
-                ),
-
-                code: ({ children }) => (
-                  <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                    {children}
-                  </code>
-                ),
-              }}
-            >
-              {comment.content}
-            </ReactMarkdown>
+            {renderCommentContent(comment.content)}
           </div>
 
           <button
@@ -299,6 +345,7 @@ const Comments = ({ postId }) => {
 
     const trimmedName = name.trim();
     const trimmedComment = comment.trim();
+    const plainComment = getPlainText(trimmedComment).trim();
 
     // Honeypot — real users never fill this field.
     if (website) return;
@@ -308,7 +355,7 @@ const Comments = ({ postId }) => {
       return;
     }
 
-    if (trimmedComment.length < 3 || trimmedComment.length > 1500) {
+    if (plainComment.length < 3 || plainComment.length > 1500) {
       setMessage("Comment must be between 3 and 1500 characters.");
       return;
     }
@@ -407,26 +454,18 @@ const Comments = ({ postId }) => {
             Comment
           </label>
 
-          <CommentToolbar
+          <CommentEditor
             value={comment}
-            setValue={setComment}
-            textareaId={`comment-content-${postId}`}
-          />
-
-          <textarea
-            id={`comment-content-${postId}`}
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            minLength={3}
-            maxLength={1500}
-            required
-            rows={4}
+            onChange={setComment}
             placeholder="Write a comment..."
-            className="w-full resize-y rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
           />
 
-          <div className="mt-1 text-right text-xs text-gray-400">
-            {comment.length}/1500
+          <div
+            className={`mt-1 text-right text-xs ${
+              commentTextLength > 1500 ? "text-red-500" : "text-gray-400"
+            }`}
+          >
+            {commentTextLength}/1500
           </div>
         </div>
 
