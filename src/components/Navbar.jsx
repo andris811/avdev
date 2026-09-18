@@ -110,7 +110,7 @@ const Navbar = () => {
                     spyThrottle={100}
                     activeClass="text-emerald-600 dark:text-emerald-300 border-t-2 border-b-2 border-emerald-600 dark:border-emerald-300 py-1"
                     className={`inline-block cursor-pointer transition-all duration-200 hover:text-emerald-600 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:scale-110 px-3 py-2 rounded-md ${item.id === "projects" && isProjectsPage ? "text-emerald-600 dark:text-emerald-300 border-t-2 border-b-2 border-emerald-600 dark:border-emerald-300 py-1" : ""}`}
-                    hashSpy={true}
+                    // hashSpy={true}
                     isDynamic={true}
                   >
                     {item.label}
@@ -205,7 +205,7 @@ const Navbar = () => {
                   activeClass="text-emerald-600 dark:text-emerald-300 border-l-2 border-emerald-600 dark:border-emerald-300 pl-2"
                   className={`block cursor-pointer transition-all duration-200 hover:text-emerald-600 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:scale-110 px-2 py-1 rounded-md origin-left ${item.id === "projects" && isProjectsPage ? "text-emerald-600 dark:text-emerald-300 border-l-2 border-emerald-600 dark:border-emerald-300 pl-2" : ""}`}
                   onClick={() => setIsOpen(false)}
-                  hashSpy={true}
+                  // hashSpy={true}
                   isDynamic={true}
                 >
                   {item.label}

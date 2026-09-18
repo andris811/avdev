@@ -209,7 +209,11 @@ const BlogPostPage = () => {
             {post.title}
           </h1>
         </header>
-
+        <img
+          src={post.socialImage || "/images/blog/default-social.jpg"}
+          alt={`${post.title} - AVDev Blog`}
+          className="w-full aspect-[1200/630] object-cover rounded-xl mb-8 shadow-sm"
+        />
         <div className="prose prose-lg dark:prose-invert max-w-none">
           {renderContent(post.content)}
         </div>
