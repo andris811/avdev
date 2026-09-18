@@ -5,15 +5,24 @@ const BlogShare = ({ title }) => {
   const [copied, setCopied] = useState(false);
 
   const url = window.location.href;
+  const postId = window.location.pathname.split("/blog/")[1];
+
+  const shareUrl = postId
+    ? `${window.location.origin}/api/share?id=${encodeURIComponent(postId)}`
+    : url;
 
   const canNativeShare = typeof navigator !== "undefined" && !!navigator.share;
 
-  const encodedUrl = encodeURIComponent(url);
+  const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = {
-    x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+    x: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodeURIComponent(
+      url,
+    )}`,
+
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
   };
 

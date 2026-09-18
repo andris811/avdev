@@ -3,6 +3,7 @@ const post = {
   title: 'Why I Wrote Idea → App Store',
   date: '2026-09-14',
   excerpt: 'AI helped me build faster. Shipping still meant learning to cut scope, review code, prepare for App Store review, and keep improving after launch. Those lessons became a book.',
+  socialImage: '/images/blog/default-social.jpg',
   tags: ['iOS', 'AI', 'indie development'],
   featuredBook: true,
   content: `
