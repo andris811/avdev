@@ -10,7 +10,7 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(facebookexternalhit|Facebot|LinkedInBot).*"
+          "value": ".*(facebookexternalhit|Facebot|LinkedInBot|Twitterbot).*"
         }
       ],
       "destination": "/api/share?id=:id"

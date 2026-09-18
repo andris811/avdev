@@ -230,108 +230,145 @@ const Comments = ({ postId }) => {
     );
   };
 
-  const renderComment = (comment, depth = 0) => {
-    return (
-      <div
-        key={comment.id}
-        className={
-          depth > 0
-            ? "ml-4 border-l-2 border-gray-200 pl-4 dark:border-gray-700 sm:ml-6 sm:pl-5"
-            : ""
-        }
+const renderComment = (comment, isReply = false) => {
+  const getAllReplies = (parentComment) => {
+    const replies = [];
+
+    parentComment.replies?.forEach((reply) => {
+      replies.push({
+        ...reply,
+        replyingToName: parentComment.name,
+      });
+
+      replies.push(...getAllReplies(reply));
+    });
+
+    return replies;
+  };
+
+  const conversationReplies = !isReply ? getAllReplies(comment) : [];
+
+  const renderSingleComment = (
+    currentComment,
+    reply = false,
+    replyingToName = null,
+  ) => (
+    <div
+      key={currentComment.id}
+      className={
+        reply
+          ? "border-l-2 border-gray-200 py-3 pl-4 dark:border-gray-700 sm:pl-5"
+          : "pb-3"
+      }
+    >
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <p className="font-semibold text-gray-900 dark:text-white">
+          {currentComment.name}
+        </p>
+
+        <time
+          dateTime={currentComment.created_at}
+          className="text-xs text-gray-500 dark:text-gray-400"
+        >
+          {formatDate(currentComment.created_at)}
+        </time>
+      </div>
+
+      <div className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+        {reply && replyingToName && (
+          <span className="mr-1 font-medium text-emerald-600 dark:text-emerald-300">
+            @{replyingToName}
+          </span>
+        )}
+
+        {renderCommentContent(currentComment.content)}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => {
+          const isClosing = replyingTo === currentComment.id;
+
+          setReplyingTo(isClosing ? null : currentComment.id);
+          setReplyText("");
+          setReplyMessage("");
+
+          if (!isClosing && name.trim()) {
+            setReplyName(name.trim());
+          }
+        }}
+        className="mt-2 text-xs font-medium text-gray-500 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
       >
-        <div className="pb-5">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <p className="font-semibold text-gray-900 dark:text-white">
-              {comment.name}
+        {replyingTo === currentComment.id ? "Cancel" : "Reply"}
+      </button>
+
+      {replyingTo === currentComment.id && (
+        <form
+          onSubmit={(e) => handleReplySubmit(e, currentComment.id)}
+          className="mt-3"
+        >
+          <input
+            type="text"
+            value={replyName}
+            onChange={(e) => setReplyName(e.target.value)}
+            maxLength={50}
+            required
+            placeholder="Your name"
+            className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+          />
+
+          <CommentEditor
+            value={replyText}
+            onChange={setReplyText}
+            placeholder={`Reply to ${currentComment.name}...`}
+          />
+
+          <div className="mt-1 flex items-center justify-between gap-4">
+            <span
+              className={`text-xs ${
+                replyTextLength > 1500 ? "text-red-500" : "text-gray-400"
+              }`}
+            >
+              {replyTextLength}/1500
+            </span>
+
+            <button
+              type="submit"
+              disabled={replySubmitting}
+              className="rounded-lg bg-emerald-700 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-400 dark:text-gray-950 dark:hover:bg-emerald-300"
+            >
+              {replySubmitting ? "Posting..." : "Post reply"}
+            </button>
+          </div>
+
+          {replyMessage && (
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              {replyMessage}
             </p>
+          )}
+        </form>
+      )}
+    </div>
+  );
 
-            <time
-              dateTime={comment.created_at}
-              className="text-xs text-gray-500 dark:text-gray-400"
-            >
-              {formatDate(comment.created_at)}
-            </time>
-          </div>
+  return (
+    <div key={comment.id}>
+      {renderSingleComment(comment)}
 
-          <div className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-            {renderCommentContent(comment.content)}
-          </div>
-
-          <button
-            type="button"
-            onClick={() => {
-              const isClosing = replyingTo === comment.id;
-
-              setReplyingTo(isClosing ? null : comment.id);
-              setReplyText("");
-              setReplyMessage("");
-
-              if (!isClosing && name.trim()) {
-                setReplyName(name.trim());
-              }
-            }}
-            className="mt-2 text-xs font-medium text-gray-500 transition-colors hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-300"
-          >
-            {replyingTo === comment.id ? "Cancel" : "Reply"}
-          </button>
-
-          {replyingTo === comment.id && (
-            <form
-              onSubmit={(e) => handleReplySubmit(e, comment.id)}
-              className="mt-3"
-            >
-              <input
-                type="text"
-                value={replyName}
-                onChange={(e) => setReplyName(e.target.value)}
-                maxLength={50}
-                required
-                placeholder="Your name"
-                className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-              />
-
-              <CommentEditor
-                value={replyText}
-                onChange={setReplyText}
-                placeholder={`Reply to ${comment.name}...`}
-              />
-
-              <div className="mt-1 flex items-center justify-between gap-4">
-                <span
-                  className={`text-xs ${
-                    replyTextLength > 1500 ? "text-red-500" : "text-gray-400"
-                  }`}
-                >
-                  {replyTextLength}/1500
-                </span>
-
-                <button
-                  type="submit"
-                  disabled={replySubmitting}
-                  className="rounded-lg bg-emerald-700 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-emerald-400 dark:text-gray-950 dark:hover:bg-emerald-300"
-                >
-                  {replySubmitting ? "Posting..." : "Post reply"}
-                </button>
-              </div>
-
-              {replyMessage && (
-                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                  {replyMessage}
-                </p>
-              )}
-            </form>
+      {conversationReplies.length > 0 && (
+        <div className="ml-3 sm:ml-5">
+          {conversationReplies.map((reply) =>
+            renderSingleComment(
+              reply,
+              true,
+              reply.replyingToName,
+            ),
           )}
         </div>
-
-        {comment.replies?.length > 0 && (
-          <div>
-            {comment.replies.map((reply) => renderComment(reply, depth + 1))}
-          </div>
-        )}
-      </div>
-    );
-  };
+      )}
+    </div>
+  );
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
