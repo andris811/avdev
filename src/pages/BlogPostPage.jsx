@@ -12,7 +12,15 @@ const BlogPostPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+
+    if (post) {
+      document.title = `${post.title} | AVDev`;
+    }
+
+    return () => {
+      document.title = "AV Dev";
+    };
+  }, [id, post]);
 
   if (!post) {
     return (

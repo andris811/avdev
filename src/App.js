@@ -8,10 +8,12 @@ import AllProjectsPage from "./pages/AllProjectsPage";
 import CVPage from "./pages/CVPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 function App() {
   return (
     <Router>
+      <GoogleAnalytics />
       <div className="App font-sans text-gray-900 scroll-smooth">
         <Navbar />
         <Routes>
