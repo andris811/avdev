@@ -1,4 +1,12 @@
 const posts = {
+  'lingua-playlist': {
+    title: 'Lingua Playlist: Learning From the Sentences I Actually Use',
+    description:
+      'Repeated podcast listening helped me learn. I built Lingua Playlist to bring that same habit to my own sentences, turning notes and screenshots into audio playlists for commuting and running.',
+    image: 'https://andrasvarga.dev/images/blog/lingua-playlist/hero-editorial-v2.png',
+    imageWidth: 1730,
+    imageHeight: 909,
+  },
   "idea-to-app-store": {
     title: "Why I Wrote Idea → App Store",
     description:
@@ -59,8 +67,8 @@ module.exports = (req, res) => {
   <meta property="og:description" content="${description}" />
   <meta property="og:url" content="${url}" />
   <meta property="og:image" content="${image}" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content="${post.imageWidth || 1200}" />
+  <meta property="og:image:height" content="${post.imageHeight || 630}" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${title}" />
