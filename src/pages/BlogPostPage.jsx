@@ -1,5 +1,6 @@
-import { useParams, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import BlogContent from '../components/BlogContent'
 import { getPostById } from "../data/blog";
 import BookPurchase from "../components/BookPurchase";
 import BlogShare from "../components/BlogShare";
@@ -46,145 +47,6 @@ const BlogPostPage = () => {
     });
   };
 
-  const renderContent = (content) => {
-    const lines = content.trim().split("\n");
-    const elements = [];
-    let inList = false;
-    let listItems = [];
-
-    const processBold = (text) => {
-      const parts = text.split(/(\*\*[^*]+\*\*)/);
-      return parts.map((part, i) => {
-        if (part.startsWith("**") && part.endsWith("**")) {
-          return (
-            <strong
-              key={i}
-              className="font-semibold text-gray-900 dark:text-white"
-            >
-              {part.slice(2, -2)}
-            </strong>
-          );
-        }
-        return part;
-      });
-    };
-
-    lines.forEach((line, index) => {
-      const trimmed = line.trim();
-
-      if (trimmed.startsWith("## ")) {
-        if (inList) {
-          elements.push(
-            <ul
-              key={`list-${index}`}
-              className="list-disc list-inside space-y-1 mb-4"
-            >
-              {listItems}
-            </ul>,
-          );
-          listItems = [];
-          inList = false;
-        }
-        elements.push(
-          <h2
-            key={index}
-            className="text-xl font-semibold mt-8 mb-4 text-gray-900 dark:text-white"
-          >
-            {trimmed.slice(3)}
-          </h2>,
-        );
-      } else if (
-        trimmed.startsWith("1. ") ||
-        trimmed.startsWith("2. ") ||
-        trimmed.startsWith("3. ")
-      ) {
-        if (!inList) {
-          inList = true;
-        }
-        listItems.push(
-          <li key={index} className="text-gray-700 dark:text-gray-300">
-            {processBold(trimmed.slice(3))}
-          </li>,
-        );
-      } else if (trimmed.startsWith("- ")) {
-        if (inList) {
-          elements.push(
-            <ul
-              key={`list-${index}`}
-              className="list-disc list-inside space-y-1 mb-4"
-            >
-              {listItems}
-            </ul>,
-          );
-          listItems = [];
-          inList = false;
-        }
-        if (
-          elements.length > 0 &&
-          elements[elements.length - 1]?.type === "ul"
-        ) {
-          const lastUl = elements.pop();
-          elements.push(
-            <ul key={index} className="list-disc list-inside space-y-1 mb-4">
-              {lastUl.props.children}
-              <li className="text-gray-700 dark:text-gray-300">
-                {processBold(trimmed.slice(2))}
-              </li>
-            </ul>,
-          );
-        } else {
-          elements.push(
-            <ul key={index} className="list-disc list-inside space-y-1 mb-4">
-              <li className="text-gray-700 dark:text-gray-300">
-                {processBold(trimmed.slice(2))}
-              </li>
-            </ul>,
-          );
-        }
-      } else if (trimmed === "") {
-        if (inList) {
-          elements.push(
-            <ul
-              key={`list-${index}`}
-              className="list-disc list-inside space-y-1 mb-4"
-            >
-              {listItems}
-            </ul>,
-          );
-          listItems = [];
-          inList = false;
-        }
-      } else {
-        if (inList) {
-          elements.push(
-            <ul
-              key={`list-${index}`}
-              className="list-disc list-inside space-y-1 mb-4"
-            >
-              {listItems}
-            </ul>,
-          );
-          listItems = [];
-          inList = false;
-        }
-        elements.push(
-          <p key={index} className="text-gray-700 dark:text-gray-300 mb-4">
-            {processBold(trimmed)}
-          </p>,
-        );
-      }
-    });
-
-    if (inList) {
-      elements.push(
-        <ul key="final-list" className="list-disc list-inside space-y-1 mb-4">
-          {listItems}
-        </ul>,
-      );
-    }
-
-    return elements;
-  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 pt-24 pb-12 px-4 md:px-8">
@@ -223,7 +85,7 @@ const BlogPostPage = () => {
           className="w-full aspect-[1200/630] object-cover rounded-xl mb-8 shadow-sm"
         />
         <div className="prose prose-lg dark:prose-invert max-w-none">
-          {renderContent(post.content)}
+          <BlogContent content={post.content} />
         </div>
 
         <BlogShare title={post.title} />
